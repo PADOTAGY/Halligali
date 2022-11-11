@@ -4,6 +4,8 @@
 # include <stdio.h>
 # include <Windows.h>
 
+#define SCREEN_MID_X 120
+#define SCREEN_MID_Y 32
 
 #define CARD_POS_X_NPC_L 70
 #define CARD_POS_Y_NPC_L 8
