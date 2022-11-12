@@ -2,15 +2,12 @@
 
 static void drawPlaceForCard(int posX, int posY)
 {
-	setCurrentCursorPos(posX - 2, posY - 1);
-	printf("┌─────────────────────┐");
+	printOnPos("┌─────────────────────┐", posX - 2, posY - 1);
+	
 	for (int i = 0; i < 15; i++)
-	{
-		setCurrentCursorPos(posX - 2, posY + i);
-		printf("│                     │");
-	}
-	setCurrentCursorPos(posX - 2, posY + 15);
-	printf("└─────────────────────┘");
+		printOnPos("│                     │", posX - 2, posY + i);
+
+	printOnPos("└─────────────────────┘", posX - 2, posY + 15);
 }
 
 void drawScreen(void)

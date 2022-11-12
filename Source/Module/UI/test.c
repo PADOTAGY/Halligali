@@ -22,7 +22,7 @@ int main()
 		deleteCard(CARD_POS_X_PERSON_R, CARD_POS_Y_PERSON_R);
 		drawCard(rand() % 20, CARD_POS_X_PERSON_R, CARD_POS_Y_PERSON_R);
 		drawHitBellMotion();
-		Sleep(2000);
+		Sleep(500);
 
 	}
 

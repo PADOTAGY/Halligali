@@ -3,59 +3,41 @@
 static void drawStrawberry(int posX, int posY)
 {
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 10);
-	setCurrentCursorPos(posX + 2, posY);
-	printf("■■");
+	printOnPos("■■", posX + 2, posY);
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 12);
-	setCurrentCursorPos(posX + 1, posY + 1);
-	printf("■■■");
-	setCurrentCursorPos(posX, posY + 2);
-	printf("■■■■");
-	setCurrentCursorPos(posX + 1, posY + 3);
-	printf("■■■");
-	setCurrentCursorPos(posX + 2, posY + 4);
-	printf("■■");
+	printOnPos("■■■", posX + 1, posY + 1);
+	printOnPos("■■■■", posX, posY + 2);
+	printOnPos("■■■", posX + 1, posY + 3);
+	printOnPos("■■", posX + 2, posY + 4);
 }
 
 static void drawBanana(int posX, int posY)
 {
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 6);
-	setCurrentCursorPos(posX + 2, posY);
-	printf("■■■");
-	setCurrentCursorPos(posX + 3, posY + 1);
-	printf("■■");
-	setCurrentCursorPos(posX + 2, posY + 2);
-	printf("■■■");
-	setCurrentCursorPos(posX + 1, posY + 3);
-	printf("■■■");
+	printOnPos("■■■", posX + 2, posY);
+	printOnPos("■■", posX + 3, posY + 1);
+	printOnPos("■■■", posX + 2, posY + 2);
+	printOnPos("■■■", posX + 1, posY + 3);
 }
 
 static void drawPlum(int posX, int posY)
 {
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 8);
-	setCurrentCursorPos(posX + 3, posY);
-	printf("■");
+	printOnPos("■", posX + 3, posY);
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 13);
-	setCurrentCursorPos(posX + 1, posY + 1);
-	printf("■■■");
-	setCurrentCursorPos(posX, posY + 2);
-	printf("■■■■");
-	setCurrentCursorPos(posX + 1, posY + 3);
-	printf("■■■");
-	setCurrentCursorPos(posX + 2, posY + 4);
-	printf("■■");
+	printOnPos("■■■", posX + 1, posY + 1);
+	printOnPos("■■■■", posX, posY + 2);
+	printOnPos("■■■", posX + 1, posY + 3);
+	printOnPos("■■", posX + 2, posY + 4);
 }
 
 static void drawLime(int posX, int posY)
 {
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 10);
-	setCurrentCursorPos(posX + 2, posY + 0);
-	printf("■■");
-	setCurrentCursorPos(posX + 1, posY + 1);
-	printf("■■■");
-	setCurrentCursorPos(posX, posY + 2);
-	printf("■■■");
-	setCurrentCursorPos(posX + 1, posY + 3);
-	printf("■■");
+	printOnPos("■■", posX + 2, posY);
+	printOnPos("■■■", posX + 1, posY + 1);
+	printOnPos("■■■", posX, posY + 2);
+	printOnPos("■■", posX + 1, posY + 3);
 }
 
 void drawCard(int cardID, int posX, int posY)
