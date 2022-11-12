@@ -15,3 +15,9 @@ COORD getCurrentCursorPos(void)
 	curPoint.Y = curInfo.dwCursorPosition.Y;
 	return curPoint;
 }
+
+void printOnPos(const char *str, int posX, int posY)
+{
+	setCurrentCursorPos(posX, posY);
+	printf(str);
+}
