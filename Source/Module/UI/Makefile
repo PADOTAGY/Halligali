@@ -5,6 +5,7 @@ SRCS = 	test.c\
 		deleteCard.c\
 		drawCard.c\
 		drawScrean.c\
+		drawHitBellMotion.c\
 		initTerminal.c\
 		UIutil.c
 

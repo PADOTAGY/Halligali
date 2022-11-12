@@ -8,6 +8,8 @@ int main()
 
     drawScreen();
 
+	drawHitBellMotion();
+
 	for (int i = 0; i < 100; i++)
 	{
 		
@@ -19,6 +21,7 @@ int main()
 		drawCard(rand() % 20, CARD_POS_X_PERSON_L, CARD_POS_Y_PERSON_L);
 		deleteCard(CARD_POS_X_PERSON_R, CARD_POS_Y_PERSON_R);
 		drawCard(rand() % 20, CARD_POS_X_PERSON_R, CARD_POS_Y_PERSON_R);
+		drawHitBellMotion();
 		Sleep(2000);
 
 	}
