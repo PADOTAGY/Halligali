@@ -105,7 +105,8 @@ void drawHitBellMotion()
     {
         deleteHand(HAND_BASIS_X, posY-1);
 	    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 8);
-        printOnPos(bellModel[posY - BELL_BASIS_Y - 1].str, bellModel[posY - BELL_BASIS_Y - 1].posX, posY - 1);
+        for (int line = posY - BELL_BASIS_Y - 1; line < 15; line++) 
+            printOnPos(bellModel[line].str, bellModel[line].posX, line + BELL_BASIS_Y);
         drawHand(HAND_BASIS_X, posY);
         Sleep(10);
     }
