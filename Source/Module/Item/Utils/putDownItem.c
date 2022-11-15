@@ -1,6 +1,6 @@
-#include "module.h"
+#include "../item.h""
 
-void putDownItem(Item *item) {
+void putDownItem(User *user, Item *item) {
     if (item == NULL) return;
 
     switch (item->state) {
@@ -8,6 +8,7 @@ void putDownItem(Item *item) {
             break;
 
         case Inactive:
+            user->item->round = 0;
             runItem(item);
             break;
     }

@@ -3,6 +3,11 @@
 
 #include "../module.h"
 
+#define RULECHANGE_ITEM_MAX_ROUND 0
+#define STAR_ITEM_MAX_ROUND 3
+#define BOMB_ITEM_MAX_ROUND 0
+#define WIN_ITEM_MAX_ROUND 0
+
 Item* getNextItem();
 void checkAndRunItem(Item *item);
 void putDownItem(Item *item);
@@ -13,7 +18,7 @@ typedef enum ItemState { Active = 0, Inactive = 1, Deleted = 2 } ItemState;
 typedef struct Item {
 	ItemId id;
 	ItemState state;
-	int roundCount;
+	int round;
 } Item;
 
 #endif

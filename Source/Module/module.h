@@ -10,5 +10,6 @@
 #include "./NPC/NPC.h"
 #include "./Reusable/reusable.h"
 #include "./UI/UI.h"
+#include "./User/user.h"
 
 #endif
