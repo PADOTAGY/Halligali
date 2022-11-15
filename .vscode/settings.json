@@ -1,8 +1,0 @@
-{
-    "files.associations": {
-        "windows.h": "c",
-        "stdio.h": "c",
-        "module.h": "c",
-        "item.h": "c"
-    }
-}
