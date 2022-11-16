@@ -3,6 +3,9 @@
 
 # include <stdio.h>
 # include <Windows.h>
+#include <conio.h>
+
+#define SPACE 32
 
 #define SCREEN_MID_X 120
 #define SCREEN_MID_Y 32
@@ -43,4 +46,5 @@ void drawScreen(void);
 void drawCard(int cardID, int posX, int posY);
 void deleteCard(int posX, int posY);
 
+void drawHitBellMotionTest(int flint);
 #endif
