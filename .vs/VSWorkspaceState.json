@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Source",
+    "\\Source\\Module",
+    "\\Source\\Module\\Card",
+    "\\Source\\Module\\Game",
+    "\\Source\\Module\\Item",
+    "\\Source\\Module\\Item\\Utils",
+    "\\Source\\Module\\NPC",
+    "\\Source\\Module\\UI",
+    "\\Source\\Module\\User"
+  ],
+  "SelectedNode": "\\Source\\Module\\NPC\\npcDrawCard.c",
+  "PreviewInSolutionExplorer": false
+}
