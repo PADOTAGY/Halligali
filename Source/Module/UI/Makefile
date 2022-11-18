@@ -11,11 +11,13 @@ SRCS = 	test.c\
 
 OBJS = $(SRCS:.c=.o)
 
+WINMM = C:\Windows\System32\winmm.dll
+
 
 all: $(NAME)
 
 $(NAME)	: $(OBJS)
-	gcc -o $(NAME) $(OBJS)
+	gcc -o $(NAME) $(OBJS) $(WINMM)
 
 %.o : %.c
 	gcc -c $^ -o $@
