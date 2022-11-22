@@ -1,7 +1,6 @@
 
 #include "UI.h"
 
-
 int main()
 {
 	initTerminal();
@@ -28,4 +27,5 @@ int main()
 	}
 
 	getchar();
+	
 }
