@@ -1,8 +1,9 @@
-#include<NPC.h>
+#include "NPC.h"
 
-int checkIsNPCAdvantage()
+int checkIsNPCAdvantage(Game *game)
 {
-    if(game->npc.leftCardSet->root.id%5==4||game->npc.leftCardSet->root.id%5==4)
+    //
+    if(game->npc->leftCardSet->root->id%5==4||game->npc->leftCardSet->root->id%5==4)
     {
         return 1;
     }

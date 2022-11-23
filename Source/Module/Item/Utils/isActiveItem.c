@@ -18,7 +18,7 @@ int isActiveBombItem(Item *item) {
     return 0;
 }
 
-int isWinItem(Game *game, Item *item) {
+int isActiveWinItem(Item *item) {
     if (item->id == WinItemId && item->state == Active)
         return 1;
     return 0;

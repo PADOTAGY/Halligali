@@ -1,14 +1,6 @@
-#ifndef user_H
-# define user_H
+#ifndef USER_H
+# define USER_H
 
-#include "../module.h"
-
-typedef struct User {
-    CardSet *originCardSet;
-    CardSet *leftCardSet;
-    CardSet *rightCardSet;
-    Item *item;
-    int point;
-} User;
+#include "../Reusable/Reusable.h"
 
 #endif

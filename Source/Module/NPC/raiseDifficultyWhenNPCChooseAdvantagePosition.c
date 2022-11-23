@@ -1,9 +1,10 @@
 #include "NPC.h"
 
-double AvgTimeUserPutDownBell = 0.0;
-double tmpAvgTimeUserPutDownBell;
+void raiseDifficultyNPCAdvantage(Game *game){
+    game->npc->tmpAvgTimeUserPutDownBell = game->npc->AvgTimeUserPutDownBell;
+    game->npc->AvgTimeUserPutDownBell *= 0.3; //난이도 상승
+}
 
-tmpAvgTimeUserPutDownBell = AvgTimeUserPutDownBell;
-AvgTimeUserPutDownBell *= 0.3; //난이도 상승
-
-//나중에 메인로직에서 AvgTimeUserPutDownBell값에 tmpAvgTimeUserPutDownBell값 넣기
+void returnRaiseDifficultyNPCAdvantage(Game *game){
+    game->npc->AvgTimeUserPutDownBell=game->npc->AvgTimeUserPutDownBell/3*10 ; //난이도 원상태로
+}

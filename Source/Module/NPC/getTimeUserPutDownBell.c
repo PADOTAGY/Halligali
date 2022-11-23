@@ -5,39 +5,30 @@
 
 
 //user가 space바를 입력했는지 확인하는 함수. space바 입력 시 함수 종료
-void userKeyInputPutDownBell(void)  
-{
-   int key;
-   int cntt;
 
-   while (!_kbhit())
-   {
-      cntt = 0;
-      key = _getch();
-      switch (key) {
+
+double getTimeUserPutDownBell(Game *game) 
+{
+   clock_t start, end;
+   double result;
+   //종을 치는 조건이 충족되면
+   start = clock();  //시간 측정 시작
+   int cntt=0;
+   //userKeyInputPutDownBell();
+
+   switch(game->key){
       case SPACE:
-         cntUserPutDownBell++;
+         game->npc->cntUserPutDownBell++;
          cntt++;
          break;
-      }
-      if (cntt == 1)break;
+      if(cntt==1) break;
    }
-}
-
-double getTimeUserPutDownBell(void) 
-{
-    clock_t start, end;
-    double result;
- 
-    start = clock();  //시간 측정 시작
-
-   userKeyInputPutDownBell();
    
     end = clock(); //시간 측정 종료
 
 
     result = (double)(end)-(double)(start);
-    result /= 1000; //ms을 s로 표현하게 하기 위해
-
+    //result /= 1000; //ms을 s로 표현하게 하기 위해
+   //해성님 UI로 출력할 때 return받은 값 1000으로 나눠서 출력해주세요..!
     return result;
 }

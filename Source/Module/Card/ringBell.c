@@ -1,49 +1,122 @@
-#include "Card.h"
-#include "Reusable.h"
+#include "card.h"
 
-int ringBell(Game *game, Player player)
-{
-    int countAll = game->user.leftCardSet->count + game->user.rightCardSet->count + game->npc.leftCardSet->count + game->npc.rightCardSet->count;
-    int sum[4] = {0};
-    if (game->user.leftCardSet->count > 0)
-    {
-        sum[game->user.leftCardSet->root->id / 5] += game->user.leftCardSet->root->id % 5 + 1;
-    }
-
-    if (game->user.rightCardSet->count > 0)
-    {
-        sum[game->user.rightCardSet->root->id / 5] += game->user.rightCardSet->root->id % 5 + 1;
-    }
-
-    if (game->npc.leftCardSet->count > 0)
-    {
-        sum[game->npc.leftCardSet->root->id / 5] += game->npc.leftCardSet->root->id % 5 + 1;
-    }
-
-    if (game->npc.rightCardSet->count > 0)
-    {
-        sum[game->npc.rightCardSet->root->id / 5] += game->npc.rightCardSet->root->id % 5 + 1;
-    }
-
-    if ((sum[0] % 5 == 0 && sum[0] != 0) || (sum[1] % 5 == 0 && sum[1] != 0) || (sum[2] % 5 == 0 && sum[2] != 0) || (sum[3] % 5 == 0 && sum[3] != 0))
-    {
-        if (player.originCardSet->count == 0)
-        {
-            player.originCardSet->root = mergedCardSet();
+int putDownBell(Game *game) {
+    int countAll = game->user->leftCardSet->count + game->user->rightCardSet->count + game->npc->leftCardSet->count + game->npc->rightCardSet->count;
+    if (game->whoBell == 0) {
+        if (isNiceBell(game)) {
+            if (game->user->originCardSet->count == 0)
+            {
+                game->user->originCardSet->root = mergedCardSet(game);
+            }
+            else
+            {
+                struct Card *p = getCard(game->user->originCardSet, game->user->originCardSet->count - 1);
+                p->next = mergedCardSet(game);
+            }
+            game->user->originCardSet->count += countAll;
         }
-        else
-        {
-            struct Card *p = getCard(player.originCardSet, player.originCardSet->count - 1);
-            p->next = mergedCardSet();
+        else {
+            penaltyUser(game);
         }
-
-        player.originCardSet->count += countAll;
-    }
-    else
-    {
-        penalty(player);
+    } else {
+        if (isNiceBell(game)) {
+            if (game->npc->originCardSet->count == 0)
+            {
+                game->npc->originCardSet->root = mergedCardSet(game);
+            }
+            else
+            {
+                struct Card *p = getCard(game->npc->originCardSet, game->npc->originCardSet->count - 1);
+                p->next = mergedCardSet(game);
+            }
+            game->npc->originCardSet->count += countAll;
+        }
+        else{
+            penaltyNPC(game);
+        }
     }
 }
+
+int isNiceBell(Game *game) {
+    int sum[4] = {0};
+
+    if (game->who == 0 && isActiveWinItem(game->user->item)) return 1;
+
+    if (game->user->leftCardSet->count > 0) sum[game->user->leftCardSet->root->id / 5] += game->user->leftCardSet->root->id % 5 + 1;
+    if (game->user->rightCardSet->count > 0) sum[game->user->rightCardSet->root->id / 5] += game->user->rightCardSet->root->id % 5 + 1;
+    if (game->npc->leftCardSet->count > 0) sum[game->npc->leftCardSet->root->id / 5] += game->npc->leftCardSet->root->id % 5 + 1;
+    if (game->npc->rightCardSet->count > 0) sum[game->npc->rightCardSet->root->id / 5] += game->npc->rightCardSet->root->id % 5 + 1;
+
+    if ((sum[0] % 5 == 0 && sum[0] != 0) || (sum[1] % 5 == 0 && sum[1] != 0) || (sum[2] % 5 == 0 && sum[2] != 0) || (sum[3] % 5 == 0 && sum[3] != 0))
+        return 1;
+    else
+        return 0;
+}
+
+
+// int ringBell(Game *game)
+// {
+//     int countAll = game->user->leftCardSet->count + game->user->rightCardSet->count + game->npc->leftCardSet->count + game->npc->rightCardSet->count;
+//     int sum[4] = {0};
+//     if (game->user->leftCardSet->count > 0)
+//     {
+//         sum[game->user->leftCardSet->root->id / 5] += game->user->leftCardSet->root->id % 5 + 1;
+//     }
+
+//     if (game->user->rightCardSet->count > 0)
+//     {
+//         sum[game->user->rightCardSet->root->id / 5] += game->user->rightCardSet->root->id % 5 + 1;
+//     }
+
+//     if (game->npc->leftCardSet->count > 0)
+//     {
+//         sum[game->npc->leftCardSet->root->id / 5] += game->npc->leftCardSet->root->id % 5 + 1;
+//     }
+
+//     if (game->npc->rightCardSet->count > 0)
+//     {
+//         sum[game->npc->rightCardSet->root->id / 5] += game->npc->rightCardSet->root->id % 5 + 1;
+//     }
+
+//     if ((sum[0] % 5 == 0 && sum[0] != 0) || (sum[1] % 5 == 0 && sum[1] != 0) || (sum[2] % 5 == 0 && sum[2] != 0) || (sum[3] % 5 == 0 && sum[3] != 0))
+//     {
+//         if(game->whoBell == 0){
+//             NPC *player = game->npc;
+//             if (player.originCardSet->count == 0)
+//             {
+//                 player.originCardSet->root = mergedCardSet();
+//             }
+//             else
+//             {
+//                 struct Card *p = getCard(player.originCardSet, player.originCardSet->count - 1);
+//                 p->next = mergedCardSet();
+//             }
+//             player.originCardSet->count += countAll;
+//         }
+//         else{
+//             User *player = game->user;
+//             if (player.originCardSet->count == 0)
+//             {
+//                 player.originCardSet->root = mergedCardSet();
+//             }
+//             else
+//             {
+//                 struct Card *p = getCard(player.originCardSet, player.originCardSet->count - 1);
+//                 p->next = mergedCardSet();
+//             }
+//             player.originCardSet->count += countAll;
+//         }   
+        
+//     }
+//     else
+//     {
+//         if(game->whoBell == 0)
+//             penalty();
+//         else{
+//             penalty()
+//         }
+//     }
+// }
 struct Card *getCard(struct CardSet *S, int n)
 { // n번째 카드를 찾아주는 함수 (n >= 0)
     struct Card *p = S->root;
@@ -53,10 +126,10 @@ struct Card *getCard(struct CardSet *S, int n)
     }
     return p;
 }
-struct Card *mergedCardSet()
+Card *mergedCardSet(Game *game)
 {
-    struct CardSet *userL = game->user.leftCardSet, *userR = game->user.rightCardSet, *npcL = game->npc.leftCardSet, *npcR = game->npc.rightCardSet;
-    struct Card *returnedCard = NULL, *currentCard;
+    CardSet *userL = game->user->leftCardSet, *userR = game->user->rightCardSet, *npcL = game->npc->leftCardSet, *npcR = game->npc->rightCardSet;
+    Card *returnedCard = NULL, *currentCard;
     int i = 4;
     int a = 0, b = 1, c = 2, d = 3;
     while (1)
@@ -130,41 +203,47 @@ struct Card *mergedCardSet()
     }
     return returnedCard;
 }
-void penalty(struct Player player)
+void penaltyUser(Game *game)
 {
-    if (player.originCardSet->count == 0)
+    if (game->user->originCardSet->count == 0)
     {
         return;
     }
-    struct Card *tmp;
-    tmp = player.originCardSet->root;
-    player.originCardSet->root = player.originCardSet->root->next;
-    struct Card *p;
-    if (player.id == NPC)
+    Card *tmp;
+    tmp = game->user->originCardSet->root;
+    game->user->originCardSet->root = game->user->originCardSet->root->next;
+    Card *p;
+    if (game->npc->originCardSet->count >= 1)
     {
-        if (game->user.originCardSet->count >= 1)
-        {
-            p = getCard(game->user.originCardSet, game->user.originCardSet->count - 1);
-            p->next = tmp;
-        }
-        else
-        {
-            game->user.originCardSet->root = tmp;
-        }
-        game->user.originCardSet->count++;
+        p = getCard(game->npc->originCardSet, game->npc->originCardSet->count - 1);
+        p->next = tmp;
     }
     else
     {
-        if (game->npc.originCardSet->count >= 1)
-        {
-            p = getCard(game->npc.originCardSet, game->npc.originCardSet->count - 1);
-            p->next = tmp;
-        }
-        else
-        {
-            game->npc.originCardSet->root = tmp;
-        }
-        game->npc.originCardSet->count++;
+        game->npc->originCardSet->root = tmp;
     }
-    player.originCardSet->count--;
+    game->npc->originCardSet->count++;
+    game->user->originCardSet->count--;
+}
+void penaltyNPC(Game *game)
+{
+    if (game->npc->originCardSet->count == 0)
+    {
+        return;
+    }
+    Card *tmp;
+    tmp = game->npc->originCardSet->root;
+    game->npc->originCardSet->root = game->npc->originCardSet->root->next;
+    Card *p;
+    if (game->user->originCardSet->count >= 1)
+    {
+        p = getCard(game->user->originCardSet, game->user->originCardSet->count - 1);
+        p->next = tmp;
+    }
+    else
+    {
+        game->user->originCardSet->root = tmp;
+    }
+    game->npc->originCardSet->count++;
+    game->npc->originCardSet->count--;
 }

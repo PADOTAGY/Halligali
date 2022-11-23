@@ -1,27 +1,14 @@
-#include "Card.h"
-#include "Reusable.h"
-void putDownCard(struct Player player, int pos)
+#include "card.h"
+
+void putDownCard(CardSet *origin, CardSet *direction)
 {
-    if (player.originCardSet->count == 0)
+    if (origin->count == 0)
         return;
-    if (pos == LEFT)
-    {
-        struct Card *tmp;
-        tmp = player.originCardSet->root;
-        player.originCardSet->root = player.originCardSet->root->next;
-        tmp->next = player.leftCardSet->root;
-        player.leftCardSet->root = tmp;
-        player.originCardSet->count--;
-        player.leftCardSet->count++;
-    }
-    else
-    {
-        struct Card *tmp;
-        tmp = player.originCardSet->root;
-        player.originCardSet->root = player.originCardSet->root->next;
-        tmp->next = player.rightCardSet->root;
-        player.rightCardSet->root = tmp;
-        player.originCardSet->count--;
-        player.rightCardSet->count++;
-    }
+    Card *tmp;
+    tmp = origin->root;
+    origin->root = origin->root->next;
+    tmp->next = direction->root;
+    direction->root = tmp;
+    origin->count--;
+    direction->count++;
 }
