@@ -92,33 +92,7 @@ static void deleteHand(int posX, int posY)
     }
 }
 
-void drawHitBellMotion()
-{
-    for (int posY = 63; posY > SCREEN_MID_Y-3; posY--) // hit bell
-    {
-        deleteHand(HAND_BASIS_X, posY+1);
-        drawHand(HAND_BASIS_X, posY);
-        Sleep(10);
-    }
-    Sleep(50);
-    for (int posY = SCREEN_MID_Y-3 + 2; posY < 41; posY++) // return (on the bell)
-    {
-        deleteHand(HAND_BASIS_X, posY-1);
-	    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 8);
-        for (int line = posY - BELL_BASIS_Y - 1; line < 15; line++) 
-            printOnPos(bellModel[line].str, bellModel[line].posX, line + BELL_BASIS_Y);
-        drawHand(HAND_BASIS_X, posY);
-        Sleep(10);
-    }
-    for (int posY = 41; posY <= 63; posY++) // return (off the bell)
-    {
-        deleteHand(HAND_BASIS_X, posY-1);
-        drawHand(HAND_BASIS_X, posY);
-        Sleep(10);
-    }
-}
-
-void drawHitBellMotionTest(int flint)
+void drawHitBellMotion(int flint)
 {
     static int beforePosY; // 기존 지울 손 위치
 	static int newPosY; // 새로 출력할 손 위치
@@ -139,7 +113,7 @@ void drawHitBellMotionTest(int flint)
 
 	// if (PosY < 벨의 위치) // 손이 올라가서 벨을 쳤으면 돌아와야함 (손이 올라간다  == PosY가 줄어든다)
 	if (newPosY < SCREEN_MID_Y-3 + 2)
-		dy = 5;
+		dy = 3;
 
 	newPosY = beforePosY + dy;
     
