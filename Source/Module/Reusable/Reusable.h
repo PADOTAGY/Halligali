@@ -9,4 +9,6 @@
 #include <time.h>
 #include <conio.h>
 
+int getRandomInt(int start, int end);
+
 #endif

@@ -1,53 +1,67 @@
 #ifndef NPC_H
-# define NPC_H
+#define NPC_H
+
+#define SPACE 32
+#define LEFT 75
+#define RIGHT 77
+#define CARD_POS_X_NPC_L 70
+#define CARD_POS_Y_NPC_L 8
+#define CARD_POS_X_NPC_R 150
+#define CARD_POS_Y_NPC_R 8
 
 # include <stdio.h>
 # include <Windows.h>
 # include <time.h>
-//# include "../module.h"
+# include <conio.h>
+# include "../module.h"
 
+//í•¨ìˆ˜ ì„ ì–¸
 double getTimeWhenNPCDrawCard(void);
-double returnTimeInput(void)
+double getTimeUserPutDownBell(void);
+void userKeyInputPutDownBell(void);
+void calcAverageTimeUserPutDownBell(void);
+int checkIsNPCAdvantage(void);
+void npcDrawCard();
+void choosePositionWhenNPCDrawCardAndDrawCard();
+void npcDifficultyControl(Game *game);
 
-//¾Æ·¡ÀÇ ±¸Á¶Ã¼µéÀº ÃßÈÄ¿¡ card.h¿Í game.h Áß ÇÏ³ª·Î Á¤ÇÑ ÈÄ Çì´õÆÄÀÏ ¼±¾ðÇÒ ¿¹Á¤
-struct Player
-{
-    PlayerId id;
-    int point;
-    struct CardSet* originCardSet;
-    struct CardSet* leftCardSet;
-    struct CardSet* rightCardSet;
-    struct Item* item; // ItemSet *itemSet -> Item *item À¸·Î º¯°æ
-} Player;
 
-struct Game
-{
-    GameState state;
-    struct Player user;
-    struct Player npc;
-    int round;
-};
+
+//êµ¬ì¡°ì²´ 
+// typedef struct Game {
+// 	GameState state;
+// 	NPC *npc;
+// 	User *user;
+// 	int mode;
+// 	int key;
+// 	int gameCnt;
+// 	int drawCnt;
+// 	double playTime;
+// } Game;
 
 struct CardSet
 {
-    struct Card* root;
+    struct Card *root;
     int count;
 };
 struct Card
 {
     CardId id;
-    struct Card* next; // struct Card *prev »èÁ¦
+    struct Card *next; // struct Card *prev ì‚­ì œ
 };
-struct ItemSet
-{
-    struct Item* root;
-    int count;
-};
-struct Item
-{
-    ItemId id;
-    ItemState state;
-    int roundCount;
-};
+
+typedef struct NPC {
+    struct CardSet *originCardSet;
+    struct CardSet *leftCardSet;
+    struct CardSet *rightCardSet;
+    int score;
+
+    double AvgTimeUserPutDownBell;
+    double totalTimeUserPutDownBell = 0.0; 
+    double AvgTimeUserPutDownBell = 0.0;
+    double tmpAvgTimeUserPutDownBell;
+    int cntUserPutDownBell = 0;  //getTimeUserPutDownBell ì‹¤í–‰ ì‹œë§ˆë‹¤ +1
+}NPC;
+
 
 #endif

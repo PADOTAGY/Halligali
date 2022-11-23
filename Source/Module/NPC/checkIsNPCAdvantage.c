@@ -1,3 +1,13 @@
 #include<NPC.h>
 
-//user가 가지고 있는 카드 중 5가 있는지 체크
+int checkIsNPCAdvantage()
+{
+    if(game->npc.leftCardSet->root.id%5==4||game->npc.leftCardSet->root.id%5==4)
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+}

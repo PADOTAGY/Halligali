@@ -1,8 +1,7 @@
 #ifndef UI_H
 # define UI_H
 
-# include <stdio.h>
-# include <Windows.h>
+#include "../module.h"
 
 #define POP_SOUND ".\\..\\..\\..\\Resource\\Sound\\pop.wav" 
 #define BELL_SOUND ".\\..\\..\\..\\Resource\\Sound\\bell.wav" 

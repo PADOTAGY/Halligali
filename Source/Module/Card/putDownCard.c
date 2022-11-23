@@ -1,6 +1,6 @@
 #include "Card.h"
-
-void drawCard(struct Player player, int pos)
+#include "Reusable.h"
+void putDownCard(struct Player player, int pos)
 {
     if (player.originCardSet->count == 0)
         return;

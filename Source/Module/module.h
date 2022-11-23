@@ -1,8 +1,9 @@
-#ifndef module_H
-# define module_H
+#ifndef MODULE_H
+# define MODULE_H
 
 #include <stdio.h>
 #include <stdlib.h>
+# include <Windows.h>
 
 #include "./Card/card.h"
 #include "./Game/game.h"

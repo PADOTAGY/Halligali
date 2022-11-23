@@ -1,27 +1,43 @@
 #include "NPC.h"
 
-//timeÇÔ¼ö¸¦ ÀÌ¿ëÇÏ¸é ÃÊ(s)´ÜÀ§·Î ÃøÁ¤µÇ´Â ÇÑ°è°¡ ÀÖ´Ù.
-//µû¶ó¼­ clockÇÔ¼ö¸¦ ÀÌ¿ëÇÏ¿© ms ´ÜÀ§·Î ÃøÁ¤.
+//timeí•¨ìˆ˜ë¥¼ ì´ìš©í•˜ë©´ ì´ˆ(s)ë‹¨ìœ„ë¡œ ì¸¡ì •ë˜ëŠ” í•œê³„ê°€ ìˆë‹¤.
+//ë”°ë¼ì„œ clockí•¨ìˆ˜ë¥¼ ì´ìš©í•˜ì—¬ ms ë‹¨ìœ„ë¡œ ì¸¡ì •.
 
-double returnTimeInput(void) {
-    clock_t start, end;
-    double result;
-    int n;
-    start = clock();  //½Ã°£ ÃøÁ¤ ½ÃÀÛ
 
-    scanf("%d", &n);    //½ÇÇàÇÒ ÄÚµå
+//userê°€ spaceë°”ë¥¼ ì…ë ¥í–ˆëŠ”ì§€ í™•ì¸í•˜ëŠ” í•¨ìˆ˜. spaceë°” ì…ë ¥ ì‹œ í•¨ìˆ˜ ì¢…ë£Œ
+void userKeyInputPutDownBell(void)  
+{
+   int key;
+   int cntt;
 
-    end = clock(); //½Ã°£ ÃøÁ¤ Á¾·á
-
-   
-    result = (double)(end)-(double)(start);
-    result /= 1000; //msÀ» s·Î Ç¥ÇöÇÏ°Ô ÇÏ±â À§ÇØ
-
-    return result;
+   while (!_kbhit())
+   {
+      cntt = 0;
+      key = _getch();
+      switch (key) {
+      case SPACE:
+         cntUserPutDownBell++;
+         cntt++;
+         break;
+      }
+      if (cntt == 1)break;
+   }
 }
 
+double getTimeUserPutDownBell(void) 
+{
+    clock_t start, end;
+    double result;
+ 
+    start = clock();  //ì‹œê°„ ì¸¡ì • ì‹œì‘
+
+   userKeyInputPutDownBell();
+   
+    end = clock(); //ì‹œê°„ ì¸¡ì • ì¢…ë£Œ
 
 
-int main() {
-    printf("%f",returnTimeInput());
+    result = (double)(end)-(double)(start);
+    result /= 1000; //msì„ së¡œ í‘œí˜„í•˜ê²Œ í•˜ê¸° ìœ„í•´
+
+    return result;
 }

@@ -3,26 +3,26 @@
 void runItem(Game *game, Item *item) {
     if (item == NULL) return;
 
-    item->round += 1;
+    item->drawCnt += 1;
     
     updateItemState(item);
     
     if (item->state != Active) return;
 
     switch (item->id) {
-        case RuleChange:
+        case RuleChangeItemId:
             ruleChangeItemHandler(game, item);
             break;
 
-        case Star:
+        case StarItemId:
             starItemHandler(game, item);
             break;
 
-        case Bomb:
+        case BombItemId:
             bombItemHandler(game, item);
             break;
 
-        case Win:
+        case WinItemId:
             winItemHandler(game, item);
             break;
     }
@@ -32,30 +32,30 @@ void updateItemState(Item *item) {
     item->state = Active;
 
     switch (item->id) {
-        case RuleChange:
-            if (item->round > RULECHANGE_ITEM_MAX_ROUND)
+        case RuleChangeItemId:
+            if (item->drawCnt > RULECHANGE_ITEM_MAX_ROUND)
                 item->state = Deleted;
             break;
 
-        case Star:
-            if (item->round > STAR_ITEM_MAX_ROUND)
+        case StarItemId:
+            if (item->drawCnt > STAR_ITEM_MAX_ROUND)
                 item->state = Deleted;
             break;
 
-        case Bomb:
-            if (item->round > BOMB_ITEM_MAX_ROUND)
+        case BombItemId:
+            if (item->drawCnt > BOMB_ITEM_MAX_ROUND)
                 item->state = Deleted;
             break;
 
-        case Win:
-            if (item->round > WIN_ITEM_MAX_ROUND)
+        case WinItemId:
+            if (item->drawCnt > WIN_ITEM_MAX_ROUND)
                 item->state = Deleted;
             break;
     }
 }
 
 void ruleChangeItemHandler(Game *game, Item *item) {
-
+    
 }
 
 void starItemHandler(Game *game, Item *item) {
