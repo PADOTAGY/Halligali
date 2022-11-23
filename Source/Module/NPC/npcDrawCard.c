@@ -1,9 +1,15 @@
-#include<NPC.h>
+#include "NPC.h"
 
-/*
-checkIsNPCAdvantage
-npcDifficultyController
-npcRaiseDifficulty
-chooseAdvantagePositionWhenNPCPutDownBell 
-¿¡ ÀÖ´Â ÇÔ¼ö°¡ Æ÷ÇÔµÉ ¿¹Á¤ÀÔ´Ï´Ù.
-*/
+
+void npcDrawCard(Game *game) {
+   if (checkIsNPCAdvantage(game) == 1)  //npcì˜ ì¹´ë“œ ìˆ˜ê°€ 5ì¼ ë•Œ
+   {
+      npcDifficultyControl(game);
+   }
+
+   else if (checkIsNPCAdvantage(game) == 0)  //npcì˜ ì¹´ë“œ ìˆ˜ê°€ 5ì•„ë‹ ë•Œ
+   {
+      
+      choosePositionWhenNPCDrawCardAndDrawCard(game);
+   }
+}

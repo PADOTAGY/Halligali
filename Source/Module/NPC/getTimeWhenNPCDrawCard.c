@@ -1,7 +1,7 @@
-#include<NPC.h>
+#include "NPC.h"
 
 double getTimeWhenNPCDrawCard(void) {
     float k;
-    k = (float)(rand() % 30) / 10;  //0~3ÃÊ±îÁö »çÀÌÀÇ ½Ç¼ö
+    k = (float)(rand() % 30) / 10;  //0~3ì´ˆê¹Œì§€ ì‚¬ì´ì˜ ì‹¤ìˆ˜
     return k;
 }

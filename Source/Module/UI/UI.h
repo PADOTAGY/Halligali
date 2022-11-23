@@ -1,12 +1,6 @@
 #ifndef UI_H
 # define UI_H
 
-# include <stdio.h>
-# include <Windows.h>
-#include <conio.h>
-
-#define SPACE 32
-
 #define POP_SOUND ".\\..\\..\\..\\Resource\\Sound\\pop.wav" 
 #define BELL_SOUND ".\\..\\..\\..\\Resource\\Sound\\bell.wav" 
 #define NOPE_SOUND ".\\..\\..\\..\\Resource\\Sound\\nope.wav" 
@@ -28,6 +22,7 @@
 #define CARD_POS_X_PERSON_R 150
 #define CARD_POS_Y_PERSON_R 39
 
+# include "../Reusable/Reusable.h"
 
 typedef struct _CoordStr
 {
@@ -36,6 +31,7 @@ typedef struct _CoordStr
     char blank[55];
 } CoordStr;
 
+void updateUI(Game *game);
 
 // UIUtil
 void setCurrentCursorPos(int x, int y);

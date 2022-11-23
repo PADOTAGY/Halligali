@@ -1,10 +1,6 @@
-#ifndef user_H
-# define user_H
+#ifndef USER_H
+# define USER_H
 
-#include "../module.h"
-
-typedef struct User {
-    Item *item;
-} User;
+#include "../Reusable/Reusable.h"
 
 #endif

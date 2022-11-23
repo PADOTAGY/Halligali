@@ -1,13 +1,14 @@
-#include "Card.h"
+#include "card.h"
 
-void readyGameboard()
+void readyGameboard(Game *game)
 {
-    makeDeck(); //덱 리스트를 만들고
-    shuffle();  //셔플한 후
-    devideBytwo();  //덱 리스트를 두 개의 단일 연결리스트로 분할합니다.
+    CardId cards[56];
+    makeDeck(cards);    //덱 리스트를 만들고
+    shuffle(cards);     //셔플한 후
+    devideBytwo(game->user, game->npc, cards); //덱 리스트를 두 개의 단일 연결리스트로 분할합니다.
 }
 
-void makeDeck()
+void makeDeck(CardId cards[])
 {
     for (int i = 0; i < 4; i++)
     {
@@ -30,7 +31,7 @@ void makeDeck()
         cards[i * 14 + 13] = STRAWBERRY_FIVE + 5 * i;
     }
 }
-void shuffle()
+void shuffle(CardId cards[])
 {
     int i = 56;
     while (i > 1)
@@ -47,11 +48,11 @@ void swap(int *a, int *b)
     *b = tmp;
 }
 
-void devideBytwo()
+void devideBytwo(User *user, NPC *npc, CardId cards[])
 {
-    game->user.originCardSet->root = makeCard(cards[0]);
-    game->npc.originCardSet->root = makeCard(cards[28]);
-    struct Card *p = game->user.originCardSet->root, *q = game->npc.originCardSet->root;
+    user->originCardSet->root = makeCard(cards[0]);
+    npc->originCardSet->root = makeCard(cards[28]);
+    Card *p = user->originCardSet->root, *q = npc->originCardSet->root;
     for (int i = 1; i < 28; i++)
     {
         p->next = makeCard(cards[i]);
@@ -59,18 +60,18 @@ void devideBytwo()
         q->next = makeCard(cards[i + 28]);
         q = q->next;
     }
-    game->user.originCardSet->count = 28;
-    game->npc.originCardSet->count = 28;
-    game->user.leftCardSet->count = 0;
-    game->user.rightCardSet->count = 0;
-    game->npc.leftCardSet->count = 0;
-    game->npc.rightCardSet->count = 0;
+    user->originCardSet->count = 28;
+    npc->originCardSet->count = 28;
+    user->leftCardSet->count = 0;
+    user->rightCardSet->count = 0;
+    npc->leftCardSet->count = 0;
+    npc->rightCardSet->count = 0;
 }
 
-struct Card *makeCard(int cardId)
+Card *makeCard(int cardId)
 {
-    struct Card *newCard;
-    newCard = (struct Card *)malloc(sizeof(struct Card));
+    Card *newCard;
+    newCard = (Card *)malloc(sizeof(Card));
     newCard->id = cardId;
     newCard->next = NULL;
     return newCard;

@@ -1,14 +1,13 @@
-#ifndef game_H
-# define game_H
+#ifndef GAME_H
+# define GAME_H
 
-#include "../module.h"
+#include "../Reusable/Reusable.h"
 
-typedef enum GameState { NotStart = 0, Start = 1, Pause = 2, Finished = 3 } GameState;
+#define LEFT_KEY 75
+#define RIGHT_KEY 77
+#define UP_KEY 72
+#define SPACE_KEY 32
 
-typedef struct Game {
-	GameState state;
-	User *user;
-	int round;
-} Game;
+Game *initGame();
 
 #endif

@@ -1,53 +1,25 @@
 #ifndef NPC_H
-# define NPC_H
+#define NPC_H
 
-# include <stdio.h>
-# include <Windows.h>
-# include <time.h>
-//# include "../module.h"
+#define SPACE 32
+#define LEFT 75
+#define RIGHT 77
+#define CARD_POS_X_NPC_L 70
+#define CARD_POS_Y_NPC_L 8
+#define CARD_POS_X_NPC_R 150
+#define CARD_POS_Y_NPC_R 8
 
+#include "../Reusable/Reusable.h"
+
+
+//Ìï®Ïàò ÏÑ†Ïñ∏
 double getTimeWhenNPCDrawCard(void);
-double returnTimeInput(void)
-
-//æ∆∑°¿« ±∏¡∂√ºµÈ¿∫ √ﬂ»ƒø° card.høÕ game.h ¡ﬂ «œ≥™∑Œ ¡§«— »ƒ «Ï¥ı∆ƒ¿œ º±æ«“ øπ¡§
-struct Player
-{
-    PlayerId id;
-    int point;
-    struct CardSet* originCardSet;
-    struct CardSet* leftCardSet;
-    struct CardSet* rightCardSet;
-    struct Item* item; // ItemSet *itemSet -> Item *item ¿∏∑Œ ∫Ø∞Ê
-} Player;
-
-struct Game
-{
-    GameState state;
-    struct Player user;
-    struct Player npc;
-    int round;
-};
-
-struct CardSet
-{
-    struct Card* root;
-    int count;
-};
-struct Card
-{
-    CardId id;
-    struct Card* next; // struct Card *prev ªË¡¶
-};
-struct ItemSet
-{
-    struct Item* root;
-    int count;
-};
-struct Item
-{
-    ItemId id;
-    ItemState state;
-    int roundCount;
-};
-
+void calcAverageTimeUserPutDownBell(Game *game, NPC *npc);
+double getTimeUserPutDownBell(Game *game);
+int checkIsNPCAdvantage(Game *game);
+void npcDrawCard(Game *game);
+void choosePositionWhenNPCDrawCardAndDrawCard(Game *game);
+void npcDifficultyControl(Game *game);
+void raiseDifficultyNPCAdvantage(Game *game);
+void returnRaiseDifficultyNPCAdvantage(Game *game);
 #endif
