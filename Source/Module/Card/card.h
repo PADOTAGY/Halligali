@@ -69,7 +69,7 @@ struct Game
     GameState state;
     struct Player user;
     struct Player npc;
-    int round;
+    int gameCnt;
 };
 
 struct CardSet
@@ -94,12 +94,13 @@ struct Item
     int roundCount;
 };
 
-void makeDeck();
-void shuffle();
+void makeDeck(CardId cards[]);
+void shuffle(CardId cards[]);
 void swap();
-void devideBytwo();
+void devideBytwo(CardId cards[]);
 void readyGameboard();
 struct Card *makeCard(int cardId);
+void penalty(struct Player player);
 
 void drawCard(struct Player player, int pos);
 
@@ -109,7 +110,7 @@ struct Card *mergedCardSet();
 
 int isEndGame();
 int whoIsWinner();
+void endGame();
 
-CardId cards[56];
 struct Game *game;
 #endif
