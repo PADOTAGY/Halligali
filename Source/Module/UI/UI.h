@@ -47,4 +47,5 @@ void drawScreen(void);
 void drawCard(int cardID, int posX, int posY);
 void deleteCard(int posX, int posY);
 
+void drawHitBellMotionTest(int flint);
 #endif
