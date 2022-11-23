@@ -6,6 +6,7 @@
 #include <Windows.h>
 #include <time.h>
 #include <conio.h>
+#include <mmsystem.h>
 
 #define LEFT 75
 #define RIGHT 77
