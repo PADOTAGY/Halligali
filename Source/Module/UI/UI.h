@@ -3,6 +3,9 @@
 
 # include <stdio.h>
 # include <Windows.h>
+#include <conio.h>
+
+#define SPACE 32
 
 #define POP_SOUND ".\\..\\..\\..\\Resource\\Sound\\pop.wav" 
 #define BELL_SOUND ".\\..\\..\\..\\Resource\\Sound\\bell.wav" 
@@ -48,4 +51,5 @@ void drawScreen(void);
 void drawCard(int cardID, int posX, int posY);
 void deleteCard(int posX, int posY);
 
+void drawHitBellMotionTest(int flint);
 #endif
