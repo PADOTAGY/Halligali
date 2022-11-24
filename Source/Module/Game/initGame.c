@@ -31,5 +31,6 @@ Game *initGame()
 
 	// UI
 	initTerminal();
+	drawScreen();
 	return game;
 }
