@@ -52,7 +52,7 @@ void putDownCard(CardSet *origin, CardSet *direction);
 // int ringBell(struct Player player);
 struct Card *getCard(struct CardSet *S, int n);
 Card *mergedCardSet(Game *game);
-int putDownBell(Game *game);
+void putDownBell(Game *game);
 int isNiceBell(Game *game);
 void penaltyUser(Game *game);
 void penaltyNPC(Game *game);
@@ -60,5 +60,7 @@ void penaltyNPC(Game *game);
 int isEndGame();
 int whoIsWinner();
 void endGame();
+
+void cardHandler(Game *game);
 
 #endif

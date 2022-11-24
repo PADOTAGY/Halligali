@@ -11,7 +11,6 @@
 
 #include "../Reusable/Reusable.h"
 
-
 //함수 선언
 double getTimeWhenNPCDrawCard(void);
 void calcAverageTimeUserPutDownBell(Game *game, NPC *npc);
@@ -22,4 +21,6 @@ void choosePositionWhenNPCDrawCardAndDrawCard(Game *game);
 void npcDifficultyControl(Game *game);
 void raiseDifficultyNPCAdvantage(Game *game);
 void returnRaiseDifficultyNPCAdvantage(Game *game);
+
+void updateIsMissPutDownBell(Game *game, NPC *npc);
 #endif
