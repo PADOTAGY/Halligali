@@ -43,24 +43,37 @@ typedef struct CardSet
 {
     struct Card *root;
     int count;
-}CardSet;
+} CardSet;
 
 typedef struct Card
 {
     CardId id;
     struct Card *next; // struct Card *prev 삭제
-}Card;
+} Card;
 
-typedef enum ItemId { RuleChangeItemId = 0, StarItemId = 1, BombItemId = 2, WinItemId = 3 } ItemId;
-typedef enum ItemState { Active = 0, Inactive = 1, Deleted = 2 } ItemState;
+typedef enum ItemId
+{
+    RuleChangeItemId = 0,
+    StarItemId = 1,
+    BombItemId = 2,
+    WinItemId = 3
+} ItemId;
+typedef enum ItemState
+{
+    Active = 0,
+    Inactive = 1,
+    Deleted = 2
+} ItemState;
 
-typedef struct Item {
-	ItemId id;
-	ItemState state;
-	int drawCnt;
+typedef struct Item
+{
+    ItemId id;
+    ItemState state;
+    int drawCnt;
 } Item;
 
-typedef struct User {
+typedef struct User
+{
     CardSet *originCardSet;
     CardSet *leftCardSet;
     CardSet *rightCardSet;
@@ -68,29 +81,41 @@ typedef struct User {
     int score;
 } User;
 
-typedef struct NPC {
+typedef struct NPC
+{
     struct CardSet *originCardSet;
     struct CardSet *leftCardSet;
     struct CardSet *rightCardSet;
     int score;
-    double AvgTimeUserPutDownBell;
-    double totalTimeUserPutDownBell; 
+    double timePutDownBell;
+    int isMissPutDownBell;
+
+    double avgTimeUserPutDownBell;
+    double totalTimeUserPutDownBell;
     double tmpAvgTimeUserPutDownBell;
-    int cntUserPutDownBell;  //getTimeUserPutDownBell 실행 시마다 +1
+    int cntUserPutDownBell; // getTimeUserPutDownBell 실행 시마다 +1
 } NPC;
 
-typedef enum GameState { NotStart = 0, Start = 1, Pause = 2, End = 3 } GameState;
+typedef enum GameState
+{
+    NotStart = 0,
+    Start = 1,
+    Pause = 2,
+    End = 3
+} GameState;
 
-typedef struct Game {
-	GameState state; //NotStart, Start, Pause, End
-	NPC *npc;		
-	User *user;
-	int key;		//LEFT_KEY, RIGHT_KEY, UP_KEY, SPACE_KEY
-	int who;		//user = 0, npc = 1
-	int gameCnt;	//0, 1, ..., 무한
-	int drawCnt;
-	int whoBell;	//안 치면 -1, user가 치면 0, npc가 치면 1
-	double playTime;
+typedef struct Game
+{
+    GameState state; // NotStart, Start, Pause, End
+    NPC *npc;
+    User *user;
+    int key;     // LEFT_KEY, RIGHT_KEY, UP_KEY, SPACE_KEY
+    int who;     // user = 0, npc = 1
+    int gameCnt; // 0, 1, ..., 무한
+    int drawCnt;
+    int whoBell; //안 치면 -1, user가 치면 0, npc가 치면 1
+    double playTime;
+    int sleepMs;
 } Game;
 
 int getRandomInt(int start, int end);

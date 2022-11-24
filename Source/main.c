@@ -17,23 +17,28 @@ void getKey(Game *game)
 int main()
 {
 	Game *game = initGame();
-	while (1) {
-        while (1) {
-		getKey(game);
-		// 아이템
-		runItemModule(game, 10);
-		// 카드 내려놓기
-		// 벨 누르기
-		// NPC
-		// 승리조건
-        
-		updateUI(game);
-        
-        if (checkAndRunEndGame(game))
-            break;
-		game->key = 0;
-		Sleep(50);
-        }
-    }
+	readyGameboard(game);
+	while (1)
+	{
+		while (1)
+		{
+			getKey(game);
+			cardHandler(game);
+			runItemModule(game, 10); // 아이템
+			// 카드 내려놓기
+			// 벨 누르기
+			// npc
+			// 승리조건
+			updateUI(game); // UI
+			game->key = 0;
+
+			if (checkAndRunEndGame(game))
+			{
+				readyGameboard(game);
+				break;
+			}
+			Sleep(20);
+		}
+	}
 	return 0;
 }

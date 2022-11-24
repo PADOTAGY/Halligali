@@ -5,7 +5,8 @@ NAME = test.exe
 SRCS = 	main.c \
 		Module\Card\putDownCard.c\
 		Module\Card\readyGameboard.c\
-		Module\Card\ringBell.c\
+		Module\Card\putDownBELL.c\
+		Module\Card\cardHandler.c\
 		Module\Game\Utils\checkAndRunEndGame.c\
 		Module\Game\initGame.c\
 		Module\Item\Utils\getNextItem.c\
@@ -20,7 +21,6 @@ SRCS = 	main.c \
 		Module\UI\UIutil.c\
 		Module\UI\updateUI.c\
 		Module\NPC\calcAverageTimeUserPutDownBell.c\
-		Module\NPC\checkIsNPCAdvantage.c\
 		Module\NPC\choosePositionWhenNPCDrawCard.c\
 		Module\NPC\getTimeUserPutDownBell.c\
 		Module\NPC\getTimeWhenNPCDrawCard.c\
@@ -29,8 +29,7 @@ SRCS = 	main.c \
 		Module\NPC\npcHandler.c\
 		Module\NPC\npcPutDownBell.c\
 		Module\NPC\raiseDifficultyWhenNPCChooseAdvantagePosition.c\
-
-
+		Module\NPC\checkIsNPCAdvantage.c\
 
 OBJS = $(SRCS:.c=.o)
 
