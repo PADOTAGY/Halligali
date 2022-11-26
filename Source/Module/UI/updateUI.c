@@ -48,6 +48,10 @@ void updateUI(Game *game)
         printf("NPC Hit %d", NPCCnt++); //
         // drawHitBellMotionNPC(1); // ?
         game->whoBell = -1;
+        printOnPos("", 120, 8);
+        printf("game->playTime %f ", game->playTime);
+        printOnPos("", 120, 9);
+        printf("game->lastTime %f ", game->lastTime);
     }
     printOnPos("", 120, 2);
     printf("Item id %d, state %d", game->user->item->id, game->user->item->state);
@@ -56,5 +60,10 @@ void updateUI(Game *game)
     printOnPos("", 120, 4);
     printf("npc Card orign cnt %d ", game->npc->originCardSet->count);
     printOnPos("", 120, 5);
-    printf("levelSpeed %d ", game->npc->tmpAvgTimeUserPutDownBell);
+    printf("tmpAvgTime %f ", game->npc->tmpAvgTimeUserPutDownBell);
+    printOnPos("", 120, 6);
+    printf("totalTime %f ", game->npc->totalTimeUserPutDownBell);
+    printOnPos("", 120, 7);
+    printf("cntUserPutDownBell %d ", game->npc->cntUserPutDownBell);
+    
 }

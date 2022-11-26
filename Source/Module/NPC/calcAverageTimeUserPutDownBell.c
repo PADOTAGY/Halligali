@@ -3,7 +3,8 @@
 void calcAverageTimeUserPutDownBell(Game *game, NPC *npc)
 {
     npc->totalTimeUserPutDownBell += getTimeUserPutDownBell(game);
-    npc->tmpAvgTimeUserPutDownBell = npc->totalTimeUserPutDownBell / npc->cntUserPutDownBell;
+    if(npc->cntUserPutDownBell!=0) //최소 종을 1번은 처야한다.
+        npc->tmpAvgTimeUserPutDownBell = npc->totalTimeUserPutDownBell / npc->cntUserPutDownBell;
     npc->avgTimeUserPutDownBell=npc->tmpAvgTimeUserPutDownBell;
     
     //npc->totalTimeUserPutDownBell : user가 올바르게 종을 쳤을 때, 종을 치는 시간을 모두 더함

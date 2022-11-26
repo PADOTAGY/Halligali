@@ -10,5 +10,5 @@
 
 Game *initGame();
 void makeStartPage();
-
+void makeEndPage();
 #endif

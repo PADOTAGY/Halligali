@@ -28,8 +28,8 @@
 typedef struct _CoordStr
 {
     int posX;
-    char str[100];
-    char blank[100];
+    char str[130];
+    char blank[130];
 } CoordStr;
 
 void deletePage();
