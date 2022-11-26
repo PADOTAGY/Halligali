@@ -21,15 +21,14 @@ SRCS = 	main.c \
 		Module\UI\UIutil.c\
 		Module\UI\updateUI.c\
 		Module\NPC\calcAverageTimeUserPutDownBell.c\
-		Module\NPC\choosePositionWhenNPCDrawCard.c\
 		Module\NPC\getTimeUserPutDownBell.c\
 		Module\NPC\getTimeWhenNPCDrawCard.c\
-		Module\NPC\npcDifficultyControl.c\
-		Module\NPC\npcDrawCard.c\
-		Module\NPC\npcHandler.c\
+		Module\NPC\npcPutDownCard.c\
+		Module\NPC\runNPCModule.c\
 		Module\NPC\npcPutDownBell.c\
-		Module\NPC\raiseDifficultyWhenNPCChooseAdvantagePosition.c\
+		Module\NPC\npcDifficultyControl.c\
 		Module\NPC\checkIsNPCAdvantage.c\
+		Module\NPC\Utils\missPutDownBell.c\
 
 OBJS = $(SRCS:.c=.o)
 
