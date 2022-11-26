@@ -58,6 +58,7 @@ typedef enum ItemId
     BombItemId = 2,
     WinItemId = 3
 } ItemId;
+
 typedef enum ItemState
 {
     Active = 0,
@@ -116,6 +117,7 @@ typedef struct Game
     int whoBell; //안 치면 -1, user가 치면 0, npc가 치면 1
     double playTime;
     int sleepMs;
+    double lastTime; //시간
 } Game;
 
 int getRandomInt(int start, int end);

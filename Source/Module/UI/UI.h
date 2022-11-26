@@ -1,10 +1,10 @@
 #ifndef UI_H
-# define UI_H
+#define UI_H
 
-#define POP_SOUND ".\\..\\..\\..\\Resource\\Sound\\pop.wav" 
-#define BELL_SOUND ".\\..\\..\\..\\Resource\\Sound\\bell.wav" 
-#define NOPE_SOUND ".\\..\\..\\..\\Resource\\Sound\\nope.wav" 
-#define DDIYONG_SOUND ".\\..\\..\\..\\Resource\\Sound\\ddiyoung.wav" 
+#define POP_SOUND ".\\..\\..\\..\\Resource\\Sound\\pop.wav"
+#define BELL_SOUND ".\\..\\..\\..\\Resource\\Sound\\bell.wav"
+#define NOPE_SOUND ".\\..\\..\\..\\Resource\\Sound\\nope.wav"
+#define DDIYONG_SOUND ".\\..\\..\\..\\Resource\\Sound\\ddiyoung.wav"
 
 #define SCREEN_MID_X 120
 #define SCREEN_MID_Y 32
@@ -22,15 +22,17 @@
 #define CARD_POS_X_PERSON_R 150
 #define CARD_POS_Y_PERSON_R 39
 
-# include "../Reusable/Reusable.h"
+#include "../Reusable/Reusable.h"
+#include "../Item/item.h"
 
 typedef struct _CoordStr
 {
     int posX;
-    char str[55];
-    char blank[55];
+    char str[100];
+    char blank[100];
 } CoordStr;
 
+void deletePage();
 void updateUI(Game *game);
 
 // UIUtil
@@ -41,6 +43,7 @@ void printOnPos(const char *str, int posX, int posY);
 // drawHitBellMotion
 void drawBell();
 void drawHitBellMotion();
+void drawHitBellMotionNPC(int flint);
 
 void initTerminal(void);
 void drawScreen(void);
@@ -48,4 +51,7 @@ void drawCard(int cardID, int posX, int posY);
 void deleteCard(int posX, int posY);
 
 void drawHitBellMotionTest(int flint);
+
+void drawGameStartPage();
+void drawGameEndPage();
 #endif

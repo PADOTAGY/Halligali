@@ -34,8 +34,27 @@ static void updateCard(Game *game)
 
 void updateUI(Game *game)
 {
+    static int NPCCnt;
     updateCard(game);
+
     if (game->key == SPACE)
         drawHitBellMotion(1);
-    drawHitBellMotion(0);
+    else
+        drawHitBellMotion(0);
+
+    if (game->whoBell == 1)
+    {
+        printOnPos("", 120, 0);         // for test
+        printf("NPC Hit %d", NPCCnt++); //
+        // drawHitBellMotionNPC(1); // ?
+        game->whoBell = -1;
+    }
+    printOnPos("", 120, 2);
+    printf("Item id %d, state %d", game->user->item->id, game->user->item->state);
+    printOnPos("", 120, 3);
+    printf("user Card orign cnt %d ", game->user->originCardSet->count);
+    printOnPos("", 120, 4);
+    printf("npc Card orign cnt %d ", game->npc->originCardSet->count);
+    printOnPos("", 120, 5);
+    printf("levelSpeed %d ", game->npc->tmpAvgTimeUserPutDownBell);
 }

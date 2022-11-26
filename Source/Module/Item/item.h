@@ -1,5 +1,5 @@
 #ifndef ITEM_H
-# define ITEM_H
+#define ITEM_H
 
 #define RULECHANGE_ITEM_MAX_ROUND 0
 #define STAR_ITEM_MAX_ROUND 3
@@ -10,10 +10,11 @@
 
 #include "../Reusable/Reusable.h"
 
-void runItemModule(Game *game, int reset);
-Item* getNextItem();
+void runItemModule(Game *game);
+Item *getNextItem();
 void checkAndRunItem(Item *item);
 
+int isActiveItem(Item *item);
 int isActiveRuleChangeItem(Item *item);
 int isActiveStarItem(Item *item);
 int isActiveBombItem(Item *item);

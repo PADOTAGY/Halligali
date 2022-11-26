@@ -9,17 +9,22 @@ SRCS = 	main.c \
 		Module\Card\cardHandler.c\
 		Module\Game\Utils\checkAndRunEndGame.c\
 		Module\Game\initGame.c\
+		Module\Game\makeStartPage.c\
+		Module/UI\deletePage.c\
 		Module\Item\Utils\getNextItem.c\
-		Module\Item\Utils\isActiveItem.c\
-		Module\Item\Utils\runItem.c\
+		Module\Item\Utils\runItemUtils.c\
 		Module\Item\runItemModule.c\
+		Module\Item\isActiveItemModule.c\
 		Module\UI\deleteCard.c\
 		Module\UI\drawCard.c\
 		Module\UI\drawHitBellMotion.c\
+		Module\UI\drawHitBellMotionNPC.c\
 		Module\UI\drawScrean.c\
 		Module\UI\initTerminal.c\
 		Module\UI\UIutil.c\
 		Module\UI\updateUI.c\
+		Module\UI\drawGameStartPage.c\
+		Module\UI\drawGameEndPage.c\
 		Module\NPC\calcAverageTimeUserPutDownBell.c\
 		Module\NPC\getTimeUserPutDownBell.c\
 		Module\NPC\getTimeWhenNPCDrawCard.c\

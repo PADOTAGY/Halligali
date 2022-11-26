@@ -11,7 +11,7 @@ Game *initGame()
 	game->gameCnt = 0;
 	game->drawCnt = 0;
 	game->playTime = 0.0;
-	// game->sleepMs = 20;
+	game->sleepMs = 20;
 
 	// USER
 	game->user = (User *)malloc(sizeof(User));
@@ -20,8 +20,8 @@ Game *initGame()
 
 	// NPC
 	game->npc = (NPC *)malloc(sizeof(NPC));
-	game->npc->totalTimeUserPutDownBell = 0;
-	game->npc->cntUserPutDownBell = 0;
+	game->npc->totalTimeUserPutDownBell = 10000;
+	game->npc->cntUserPutDownBell = 1;
 	game->npc->score = 0;
 
 	// CARD
@@ -33,7 +33,7 @@ Game *initGame()
 	game->npc->rightCardSet = (struct CardSet *)malloc(sizeof(struct CardSet));
 
 	// UI
-	initTerminal();
 	drawScreen();
+
 	return game;
 }

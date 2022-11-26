@@ -2,6 +2,7 @@
 #define CARD_H
 
 #include "../Reusable/Reusable.h"
+#include "../Item/item.h"
 
 // typedef enum CardId
 // {
