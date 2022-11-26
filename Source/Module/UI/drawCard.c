@@ -43,9 +43,9 @@ static void drawLime(int posX, int posY)
 void drawCard(int cardID, int posX, int posY)
 {
 	int fruit = cardID / 5;
-	int number = cardID % 5 + 1 ;
+	int number = cardID % 5 + 1;
 	void (*drawFruit)() = 0;
-
+	deleteCard(posX, posY);
 	if (fruit == 0)
 		drawFruit = drawStrawberry;
 	else if (fruit == 1)
@@ -54,7 +54,8 @@ void drawCard(int cardID, int posX, int posY)
 		drawFruit = drawPlum;
 	else if (fruit == 3)
 		drawFruit = drawLime;
-	else return;
+	else
+		return;
 
 	switch (number)
 	{
