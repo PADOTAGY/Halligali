@@ -1,5 +1,5 @@
 #ifndef GAME_H
-# define GAME_H
+#define GAME_H
 
 #include "../Reusable/Reusable.h"
 
@@ -9,5 +9,6 @@
 #define SPACE_KEY 32
 
 Game *initGame();
+void makeStartPage();
 
 #endif

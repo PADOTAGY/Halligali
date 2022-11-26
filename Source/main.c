@@ -16,29 +16,27 @@ void getKey(Game *game)
 
 int main()
 {
+	makeStartPage();
+
 	Game *game = initGame();
-	readyGameboard(game);
 	while (1)
 	{
+		readyGameboard(game);
 		while (1)
 		{
 			getKey(game);
 			cardHandler(game);
-			runItemModule(game, 10); // 아이템
-			// 카드 내려놓기
-			// 벨 누르기
-			// npc
-			// 승리조건
-			updateUI(game); // UI
-			game->key = 0;
-
-			if (checkAndRunEndGame(game))
-			{
-				readyGameboard(game);
+			runItemModule(game);
+			runNPCModule(game);
+			updateUI(game);
+			if (checkAndRunEndGame(game)) // fix 필. 종칠 때만 실행되어야 함.
 				break;
-			}
-			Sleep(20);
+			game->key = 0;
+			game->playTime += game->sleepMs;
+			Sleep(game->sleepMs);
 		}
+		// drawGameEndPage();
+		//
 	}
 	return 0;
 }

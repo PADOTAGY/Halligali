@@ -2,10 +2,15 @@
 
 void putDownBell(Game *game)
 {
+    game->whoBell = 0;
     int countAll = game->user->leftCardSet->count + game->user->rightCardSet->count + game->npc->leftCardSet->count + game->npc->rightCardSet->count;
     if (game->whoBell == 0)
     {
-        if (isNiceBell(game))
+        if (isActiveBombItem(game->user->item))
+        {
+            // nothing
+        }
+        else if (isNiceBell(game))
         {
             if (game->user->originCardSet->count == 0)
             {
@@ -17,32 +22,33 @@ void putDownBell(Game *game)
                 p->next = mergedCardSet(game);
             }
             game->user->originCardSet->count += countAll;
+            calcAverageTimeUserPutDownBell(game, game->npc);
         }
         else
         {
             penaltyUser(game);
         }
     }
-    else
-    {
-        if (isNiceBell(game))
-        {
-            if (game->npc->originCardSet->count == 0)
-            {
-                game->npc->originCardSet->root = mergedCardSet(game);
-            }
-            else
-            {
-                struct Card *p = getCard(game->npc->originCardSet, game->npc->originCardSet->count - 1);
-                p->next = mergedCardSet(game);
-            }
-            game->npc->originCardSet->count += countAll;
-        }
-        else
-        {
-            penaltyNPC(game);
-        }
-    }
+    // else
+    // {
+    //     if (isNiceBell(game))
+    //     {
+    //         if (game->npc->originCardSet->count == 0)
+    //         {
+    //             game->npc->originCardSet->root = mergedCardSet(game);
+    //         }
+    //         else
+    //         {
+    //             struct Card *p = getCard(game->npc->originCardSet, game->npc->originCardSet->count - 1);
+    //             p->next = mergedCardSet(game);
+    //         }
+    //         game->npc->originCardSet->count += countAll;
+    //     }
+    //     else
+    //     {
+    //         penaltyNPC(game);
+    //     }
+    // }
 }
 
 int isNiceBell(Game *game)
@@ -61,10 +67,20 @@ int isNiceBell(Game *game)
     if (game->npc->rightCardSet->count > 0)
         sum[game->npc->rightCardSet->root->id / 5] += game->npc->rightCardSet->root->id % 5 + 1;
 
-    if ((sum[0] % 5 == 0 && sum[0] != 0) || (sum[1] % 5 == 0 && sum[1] != 0) || (sum[2] % 5 == 0 && sum[2] != 0) || (sum[3] % 5 == 0 && sum[3] != 0))
-        return 1;
-    else
+    if (isActiveRuleChangeItem(game->user->item))
+    {
+        for (int i = 0; i < 4; i++)
+            if ((sum[i] % 5 == 0 || sum[i] % 3 == 0) && sum[i] != 0)
+                return 1;
         return 0;
+    }
+    else
+    {
+        for (int i = 0; i < 4; i++)
+            if (sum[i] % 5 == 0 && sum[i] != 0)
+                return 1;
+        return 0;
+    }
 }
 
 // int ringBell(Game *game)
@@ -218,6 +234,9 @@ Card *mergedCardSet(Game *game)
 }
 void penaltyUser(Game *game)
 {
+    if (isActiveStarItem(game->user->item))
+        return;
+
     if (game->user->originCardSet->count == 0)
     {
         return;
