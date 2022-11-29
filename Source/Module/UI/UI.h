@@ -1,11 +1,6 @@
 #ifndef UI_H
 #define UI_H
 
-#define POP_SOUND ".\\..\\..\\..\\Resource\\Sound\\pop.wav"
-#define BELL_SOUND ".\\..\\..\\..\\Resource\\Sound\\bell.wav"
-#define NOPE_SOUND ".\\..\\..\\..\\Resource\\Sound\\nope.wav"
-#define DDIYONG_SOUND ".\\..\\..\\..\\Resource\\Sound\\ddiyoung.wav"
-
 #define SCREEN_MID_X 120
 #define SCREEN_MID_Y 32
 

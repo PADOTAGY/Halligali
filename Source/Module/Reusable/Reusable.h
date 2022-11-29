@@ -15,6 +15,11 @@
 #define SPACE 32
 #define ESC 27
 
+#define POP_SOUND ".\\..\\Resource\\Sound\\pop.wav"
+#define BELL_SOUND ".\\..\\Resource\\Sound\\bell.wav"
+#define NOPE_SOUND ".\\..\\Resource\\Sound\\nope.wav"
+#define DDIYONG_SOUND ".\\..\\Resource\\Sound\\ddiyoung.wav"
+
 typedef enum CardId
 {
     STRAWBERRY_ONE = 0,
