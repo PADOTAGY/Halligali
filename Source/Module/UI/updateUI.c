@@ -117,7 +117,7 @@ static void drawTurnArrow(int who)
 
         
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);   
-    if (who == 1) // 아직 안댐 왜냐하면 NPC가 자기 턴 처리하고 who를 다시 바꿈
+    if (who == 1)
     {
         i = 26;
         printOnPos("         ", 10, i++);
@@ -159,6 +159,7 @@ static void drawTurnArrow(int who)
         printOnPos(" ':::::'", 10, i++);
         printOnPos("   ':`", 10, i++);
    }
+    beforeWho = who;
 }
 
 void updateUI(Game *game)
