@@ -49,4 +49,6 @@ void drawHitBellMotionTest(int flint);
 
 void drawGameStartPage();
 void drawGameEndPage();
+
+void updateScore();
 #endif

@@ -21,7 +21,7 @@ Game *initGame()
 	// NPC
 	game->npc = (NPC *)malloc(sizeof(NPC));
 	game->npc->totalTimeUserPutDownBell = 0;
-	game->npc->tmpAvgTimeUserPutDownBell=500;
+	game->npc->tmpAvgTimeUserPutDownBell = 500;
 	game->npc->cntUserPutDownBell = 0;
 	game->npc->score = 0;
 
