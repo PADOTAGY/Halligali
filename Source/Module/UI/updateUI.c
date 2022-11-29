@@ -3,7 +3,7 @@
 static void updateCard(Game *game)
 {
     static userLeftCardSetCnt;
-    static userRightCardSetCnt;
+    statics userRightCardSetCnt;
     static npcLeftCardSetCnt;
     static npcRightCardSetCnt;
 
@@ -47,7 +47,6 @@ void updateUI(Game *game)
         printOnPos("", 120, 0);         // for test
         printf("NPC Hit %d", NPCCnt++); //
         // drawHitBellMotionNPC(1); // ?
-        game->whoBell = -1;
         printOnPos("", 120, 8);
         printf("game->playTime %f ", game->playTime);
         printOnPos("", 120, 9);
