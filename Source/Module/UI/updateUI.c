@@ -107,10 +107,66 @@ static void updateCard(Game *game)
     }
 }
 
+static void drawTurnArrow(int who)
+{
+    int i = 0;
+    static int beforeWho;
+
+    if (who == beforeWho)
+        return;
+
+        
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);   
+    if (who == 1) // 아직 안댐 왜냐하면 NPC가 자기 턴 처리하고 who를 다시 바꿈
+    {
+        i = 26;
+        printOnPos("         ", 10, i++);
+        printOnPos("         ", 10, i++);
+        printOnPos("         ", 10, i++);
+        printOnPos("         ", 10, i++);
+        printOnPos("         ", 10, i++);
+        printOnPos("         ", 10, i++);
+        printOnPos("         ", 10, i++);
+        printOnPos("         ", 10, i++);
+        i = 26;
+        printOnPos("    .", 10, i++);
+        printOnPos("  .:;:.", 10, i++);
+        printOnPos(".:;;;;;:.", 10, i++);
+        printOnPos("  ;;;;;", 10, i++);
+        printOnPos("  ;;;;;", 10, i++);
+        printOnPos("  ;;;;;", 10, i++);
+        printOnPos("  ;;;;;", 10, i++);
+        printOnPos("  ;:;;;", 10, i++);
+    }
+    else
+    {
+        i = 26;
+        printOnPos("         ", 10, i++);
+        printOnPos("         ", 10, i++);
+        printOnPos("         ", 10, i++);
+        printOnPos("         ", 10, i++);
+        printOnPos("         ", 10, i++);
+        printOnPos("         ", 10, i++);
+        printOnPos("         ", 10, i++);
+        printOnPos("         ", 10, i++);
+        i = 26;
+        printOnPos("  ;;;;;", 10, i++);
+        printOnPos("  ;;;;;", 10, i++);
+        printOnPos("  ;;;;;", 10, i++);
+        printOnPos("  ;;;;;", 10, i++);
+        printOnPos("  ;;;;;", 10, i++);
+        printOnPos("..;;;;;..", 10, i++);
+        printOnPos(" ':::::'", 10, i++);
+        printOnPos("   ':`", 10, i++);
+   }
+}
+
 void updateUI(Game *game)
 {
     static int NPCCnt;
+
     updateCard(game);
+    drawTurnArrow(game->who);
 
     if (game->key == SPACE)
         drawHitBellMotion(1);
@@ -118,29 +174,29 @@ void updateUI(Game *game)
         drawHitBellMotion(0);
 
     if (game->whoBell == 1)
-    {
         drawHitBellMotionNPC(1);
-        printOnPos("", 120, 0);         // for test
-        printf("NPC Hit %d", NPCCnt++); //
-        printOnPos("", 120, 8);//
-        printf("game->playTime %f ", game->playTime);//
-        printOnPos("", 120, 9);//
-        printf("game->lastTime %f ", game->lastTime);//
-    }
     else
         drawHitBellMotionNPC(0);
 
-    printOnPos("", 120, 2);//
+    
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
+    printOnPos("", 212, 0);         // for test
+    printf("NPC Hit %d", NPCCnt++); //
+    printOnPos("", 212, 8);//
+    printf("game->playTime %.2f ", game->playTime);//
+    printOnPos("", 212, 9);//
+    printf("game->lastTime %.2f ", game->lastTime);//
+    printOnPos("", 212, 2);//
     printf("Item id %d, state %d", game->user->item->id, game->user->item->state);//
-    printOnPos("", 120, 3);//
+    printOnPos("", 212, 3);//
     printf("user Card orign cnt %d ", game->user->originCardSet->count);//
-    printOnPos("", 120, 4);//
+    printOnPos("", 212, 4);//
     printf("npc Card orign cnt %d ", game->npc->originCardSet->count);//
-    printOnPos("", 120, 5);//
-    printf("tmpAvgTime %f ", game->npc->tmpAvgTimeUserPutDownBell);//
-    printOnPos("", 120, 6);//
-    printf("totalTime %f ", game->npc->totalTimeUserPutDownBell);//
-    printOnPos("", 120, 7);//
+    printOnPos("", 212, 5);//
+    printf("tmpAvgTime %.2f ", game->npc->tmpAvgTimeUserPutDownBell);//
+    printOnPos("", 212, 6);//
+    printf("totalTime %.2f ", game->npc->totalTimeUserPutDownBell);//
+    printOnPos("", 212, 7);//
     printf("cntUserPutDownBell %d ", game->npc->cntUserPutDownBell);//
     
 }
