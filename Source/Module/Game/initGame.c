@@ -20,8 +20,9 @@ Game *initGame()
 
 	// NPC
 	game->npc = (NPC *)malloc(sizeof(NPC));
-	game->npc->totalTimeUserPutDownBell = 10000;
-	game->npc->cntUserPutDownBell = 1;
+	game->npc->totalTimeUserPutDownBell = 0;
+	game->npc->tmpAvgTimeUserPutDownBell=500;
+	game->npc->cntUserPutDownBell = 0;
 	game->npc->score = 0;
 
 	// CARD
