@@ -259,3 +259,73 @@ void updateScore(Game *game)
         lastUserScore++;
     }
 }
+void updateCardSetNumber(Game *game)
+{
+    static int lastUserCardSetNumber = -1;
+    static int lastNpcCardSetNumber = -1;
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 8);
+    if (lastNpcCardSetNumber != game->npc->originCardSet->count)
+    {
+        if (game->npc->originCardSet->count / 10 == 0)
+        {
+            if (lastNpcCardSetNumber > 9)
+            {
+                printSmallNumber(-1, SCREEN_MID_X - 7, SCREEN_MID_Y - SCREEN_MID_Y / 2 - 2);
+                printSmallNumber(-1, SCREEN_MID_X + 1, SCREEN_MID_Y - SCREEN_MID_Y / 2 - 2);
+            }
+            printSmallNumber(-1, SCREEN_MID_X - 3, SCREEN_MID_Y - SCREEN_MID_Y / 2 - 2);
+        }
+        else
+        {
+            if (lastNpcCardSetNumber < 10)
+            {
+                printSmallNumber(-1, SCREEN_MID_X - 3, SCREEN_MID_Y - SCREEN_MID_Y / 2 - 2);
+            }
+
+            printSmallNumber(-1, SCREEN_MID_X - 7, SCREEN_MID_Y - SCREEN_MID_Y / 2 - 2);
+            printSmallNumber(-1, SCREEN_MID_X + 1, SCREEN_MID_Y - SCREEN_MID_Y / 2 - 2);
+        }
+        lastNpcCardSetNumber = game->npc->originCardSet->count;
+    }
+    if (game->npc->originCardSet->count / 10 == 0)
+    {
+        printSmallNumber(game->npc->originCardSet->count, SCREEN_MID_X - 3, SCREEN_MID_Y - SCREEN_MID_Y / 2 - 2);
+    }
+    else
+    {
+        printSmallNumber(game->npc->originCardSet->count / 10, SCREEN_MID_X - 7, SCREEN_MID_Y - SCREEN_MID_Y / 2 - 2);
+        printSmallNumber(game->npc->originCardSet->count % 10, SCREEN_MID_X + 1, SCREEN_MID_Y - SCREEN_MID_Y / 2 - 2);
+    }
+    if (lastUserCardSetNumber != game->user->originCardSet->count)
+    {
+        if (game->user->originCardSet->count / 10 == 0)
+        {
+            if (lastUserCardSetNumber > 9)
+            {
+                printSmallNumber(-1, SCREEN_MID_X - 7, SCREEN_MID_Y + SCREEN_MID_Y / 2 - 2);
+                printSmallNumber(-1, SCREEN_MID_X + 1, SCREEN_MID_Y + SCREEN_MID_Y / 2 - 2);
+            }
+            printSmallNumber(-1, SCREEN_MID_X - 3, SCREEN_MID_Y + SCREEN_MID_Y / 2 - 2);
+        }
+        else
+        {
+            if (lastUserCardSetNumber < 10)
+            {
+                printSmallNumber(-1, SCREEN_MID_X - 3, SCREEN_MID_Y + SCREEN_MID_Y / 2 - 2);
+            }
+
+            printSmallNumber(-1, SCREEN_MID_X - 7, SCREEN_MID_Y + SCREEN_MID_Y / 2 - 2);
+            printSmallNumber(-1, SCREEN_MID_X + 1, SCREEN_MID_Y + SCREEN_MID_Y / 2 - 2);
+        }
+        lastUserCardSetNumber = game->user->originCardSet->count;
+    }
+    if (game->user->originCardSet->count / 10 == 0)
+    {
+        printSmallNumber(game->user->originCardSet->count, SCREEN_MID_X - 3, SCREEN_MID_Y + SCREEN_MID_Y / 2 - 2);
+    }
+    else
+    {
+        printSmallNumber(game->user->originCardSet->count / 10, SCREEN_MID_X - 7, SCREEN_MID_Y + SCREEN_MID_Y / 2 - 2);
+        printSmallNumber(game->user->originCardSet->count % 10, SCREEN_MID_X + 1, SCREEN_MID_Y + SCREEN_MID_Y / 2 - 2);
+    }
+}

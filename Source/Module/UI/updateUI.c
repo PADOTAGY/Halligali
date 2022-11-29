@@ -178,6 +178,7 @@ void updateUI(Game *game)
 
     updateCard(game);
     updateScore(game);
+    updateCardSetNumber(game);
     drawTurnArrow(game->who);
 
     if (game->key == SPACE)
