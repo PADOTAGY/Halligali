@@ -85,7 +85,10 @@ void drawHitBellMotionNPC(int flint)
     static int dy;         // 변위
 
     if (flint == 1)
+    {
         dy = 4;
+        PlaySound(TEXT(BELL_SOUND), NULL, SND_ASYNC); 
+    }
 
     if (dy == 0) // 리턴
     {

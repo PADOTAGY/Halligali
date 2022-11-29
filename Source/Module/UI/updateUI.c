@@ -10,13 +10,25 @@ static void updateCard(Game *game)
     static int lastPutDownedCard; // 마지막에 카드를 놓은 위치 : 초록색으로 표시
 
     if (userLeftCardSetCnt < game->user->leftCardSet->count)
+    {
         lastPutDownedCard = 7;
+        PlaySound(TEXT(POP_SOUND), NULL, SND_ASYNC); 
+    }
     else if (userRightCardSetCnt < game->user->rightCardSet->count)
+    {
         lastPutDownedCard = 4;
+        PlaySound(TEXT(POP_SOUND), NULL, SND_ASYNC); 
+    }
     else if (npcLeftCardSetCnt < game->npc->leftCardSet->count)
+    {
         lastPutDownedCard = 11;
+        PlaySound(TEXT(POP_SOUND), NULL, SND_ASYNC); 
+    }
     else if (npcRightCardSetCnt < game->npc->rightCardSet->count)
+    {
         lastPutDownedCard = 1;
+        PlaySound(TEXT(POP_SOUND), NULL, SND_ASYNC); 
+    }
     
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
     // 7시
