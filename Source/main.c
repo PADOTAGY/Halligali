@@ -35,7 +35,6 @@ int main()
 			game->playTime += game->sleepMs;
 			Sleep(game->sleepMs);
 		}
-		Sleep(1000); //게임이 끝나고 endPage를 띄우기 위함.
 		drawGameEndPage();
 	}
 	return 0;
