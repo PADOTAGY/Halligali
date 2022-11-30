@@ -25,6 +25,7 @@ SRCS = 	main.c \
 		Module\UI\updateUI.c\
 		Module\UI\drawGameStartPage.c\
 		Module\UI\drawGameEndPage.c\
+		Module\UI\drawNumber.c\
 		Module\NPC\calcAverageTimeUserPutDownBell.c\
 		Module\NPC\getTimeUserPutDownBell.c\
 		Module\NPC\getTimeWhenNPCDrawCard.c\

@@ -49,4 +49,7 @@ void drawHitBellMotionTest(int flint);
 
 void drawGameStartPage();
 void drawGameEndPage();
+
+void updateScore(Game *game);
+void updateCardSetNumber(Game *game);
 #endif

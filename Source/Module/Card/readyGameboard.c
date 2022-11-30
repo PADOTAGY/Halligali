@@ -6,6 +6,7 @@ void readyGameboard(Game *game)
     makeDeck(cards);                           //덱 리스트를 만들고
     shuffle(cards);                            //셔플한 후
     devideBytwo(game->user, game->npc, cards); //덱 리스트를 두 개의 단일 연결리스트로 분할합니다.
+    game->state = Start;
 }
 
 void makeDeck(CardId cards[])
