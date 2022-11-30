@@ -7,7 +7,8 @@
 int checkIsNPCAdvantage(Game *game);
 void npcPutDownCard(Game *game);
 void npcPutDownCardNotAdvantage(Game *game);
-void npcPutDownCardAdvantage(Game *game);
+void npcPutDownRightCardAdvantage(game);
+void npcPutDownLeftCardAdvantage(Game *game);
 double getTimeWhenNPCDrawCard(void);
 // npc 난이도 조절
 void raiseDifficultyNPCAdvantage(NPC *npc);

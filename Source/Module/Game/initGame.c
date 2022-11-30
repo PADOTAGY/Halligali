@@ -11,6 +11,7 @@ Game *initGame()
 	game->gameCnt = 0;
 	game->drawCnt = 0;
 	game->playTime = 0.0;
+	game->lastTime = 0.0;
 	game->sleepMs = 20;
 
 	// USER
@@ -32,9 +33,6 @@ Game *initGame()
 	game->npc->originCardSet = (struct CardSet *)malloc(sizeof(struct CardSet));
 	game->npc->leftCardSet = (struct CardSet *)malloc(sizeof(struct CardSet));
 	game->npc->rightCardSet = (struct CardSet *)malloc(sizeof(struct CardSet));
-
-	// UI
-	drawScreen();
 
 	return game;
 }

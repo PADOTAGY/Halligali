@@ -17,6 +17,11 @@
 #define CARD_POS_X_PERSON_R 150
 #define CARD_POS_Y_PERSON_R 39
 
+#define ITEM_SIZE_WIDTH 12
+#define ITEM_SIZE_HEIGHT 12
+#define ITEM_POS_X 210
+#define ITEM_POS_Y 50
+
 #include "../Reusable/Reusable.h"
 #include "../Item/item.h"
 
@@ -29,6 +34,8 @@ typedef struct _CoordStr
 
 void deletePage();
 void updateUI(Game *game);
+void drawBell();
+void reDrawBell();
 
 // UIUtil
 void setCurrentCursorPos(int x, int y);
@@ -41,7 +48,7 @@ void drawHitBellMotion();
 void drawHitBellMotionNPC(int flint);
 
 void initTerminal(void);
-void drawScreen(void);
+void drawScreen(Game *game);
 void drawCard(int cardID, int posX, int posY);
 void deleteCard(int posX, int posY);
 
@@ -52,4 +59,8 @@ void drawGameEndPage();
 
 void updateScore(Game *game);
 void updateCardSetNumber(Game *game);
+
+void drawItem(Item *item, int posX, int posY);
+void deleteItem(int posX, int posY);
+
 #endif

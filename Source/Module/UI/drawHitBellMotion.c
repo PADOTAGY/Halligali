@@ -42,30 +42,6 @@ CoordStr handModel[39] = {
     {2, ",8                       ,8P", "                            "},
     {2, "IP                      ,8P", "                           "}};
 
-CoordStr bellModel[15] = {
-    {BELL_BASIS_X, ".,.,./&&&&&&&&''..."},
-    {BELL_BASIS_X - 5, ".,, ,,...&&&&&&&&&&&&,.....,"},
-    {BELL_BASIS_X - 7, ",,,.., . *&&&&&&&&&&&&&&.,...,.,."},
-    {BELL_BASIS_X - 8, ",.,.,,, .   &&&&&&&&&&&&    ..,,.,,"},
-    {BELL_BASIS_X - 9, ",  ....,,     '&&&&&&&&/       .....,"},
-    {BELL_BASIS_X - 9, ".                                ..,,"},
-    {BELL_BASIS_X - 10, ",.             .         .    .....,,.."},
-    {BELL_BASIS_X - 11, " #,              ............,,.,,.....#."},
-    {BELL_BASIS_X - 11, ".##..        ..............,,,,.......(#*"},
-    {BELL_BASIS_X - 10, "##&/,..        ..................,,,&&#/"},
-    {BELL_BASIS_X - 10, "(#&&(&(**,,..            ...,,**,&#&&&&"},
-    {BELL_BASIS_X - 9, ".&&&&&##&&&(//************/#&#&&&&&&&"},
-    {BELL_BASIS_X - 6, "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&/"},
-    {BELL_BASIS_X - 3, "*&&&&&&&&&&&&&&&&&&&&&&&&/"},
-    {BELL_BASIS_X + 1, "'&&&&&&&&&&&&&&&&&/"}};
-
-void drawBell()
-{
-    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 8);
-    for (int line = 0; line < 15; line++)
-        printOnPos(bellModel[line].str, bellModel[line].posX, BELL_BASIS_Y + line);
-}
-
 static void drawHand(int posX, int posY)
 {
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
@@ -97,7 +73,7 @@ void drawHitBellMotion(int flint)
     if (flint == 1)
     {
         dy = -5;
-        PlaySound(TEXT(BELL_SOUND), NULL, SND_ASYNC); 
+        PlaySound(TEXT(BELL_SOUND), NULL, SND_ASYNC);
     }
 
     if (dy == 0) // 리턴
@@ -119,11 +95,6 @@ void drawHitBellMotion(int flint)
     // if (PosY <= max_height) // 손이 바닥이라면 dy = 0 으로 바꿔 함수가 다시 호출되더라도 손이 그려지지 않음
     if (newPosY >= 63)
         dy = 0;
-
-    if (beforePosY < 40)
-        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 8);
-    for (int line = 0; line < 15; line++)
-        printOnPos(bellModel[line].str, bellModel[line].posX, line + BELL_BASIS_Y);
 
     // 새로운 손 그리기
     drawHand(HAND_BASIS_X, newPosY);

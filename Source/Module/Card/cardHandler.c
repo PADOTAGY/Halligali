@@ -3,6 +3,10 @@ void cardHandler(Game *game)
 {
     if (game->who == 0)
     {
+        if (game->user->originCardSet->count == 0)
+        {
+            game->who = 1;
+        }
         switch (game->key)
         {
         case LEFT:

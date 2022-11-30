@@ -16,12 +16,13 @@ void getKey(Game *game)
 
 int main()
 {
-	makeStartPage();
 
+	makeStartPage();
 	Game *game = initGame();
 	while (1)
 	{
 		readyGameboard(game);
+		drawScreen(game);
 		while (1)
 		{
 			getKey(game);
@@ -36,7 +37,6 @@ int main()
 			Sleep(game->sleepMs);
 		}
 		drawGameEndPage();
-		
 	}
 	return 0;
 }

@@ -28,5 +28,9 @@ double getTimeUserPutDownBell(Game *game)
    //  result = (double)(end)-(double)(start);
    //  return result;
    game->npc->cntUserPutDownBell++;
-   return game->playTime - game->lastTime;
+
+   if (game->playTime - game->lastTime < 200)
+      return game->npc->tmpAvgTimeUserPutDownBell;
+   else
+      return game->playTime - game->lastTime;
 }

@@ -16,4 +16,7 @@ void npcPutDownBell(Game *game, NPC *npc)
         p->next = mergedCardSet(game);
     }
     game->npc->originCardSet->count += countAll;
+
+    npc->tmpAvgTimeUserPutDownBell *= 1.1; // npc종 쳤을 때 난이도 하락
+    // game->who = 1;                         // npc종치면 npc턴
 }

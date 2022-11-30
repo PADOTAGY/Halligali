@@ -28,6 +28,8 @@ void putDownBell(Game *game)
         {
             penaltyUser(game);
         }
+
+        // game->who = 0; // user가 종치면 다음 user턴
     }
     // else
     // {
