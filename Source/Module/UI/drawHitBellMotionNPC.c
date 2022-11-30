@@ -43,23 +43,6 @@ CoordStr handModelNPC[39] = {
     {22, "■■■■■■■■■■■■", "                        "},
 };
 
-CoordStr bellModelNPC[15] = {
-    {BELL_BASIS_X, ".,.,./&&&&&&&&''..."},
-    {BELL_BASIS_X - 5, ".,, ,,...&&&&&&&&&&&&,.....,"},
-    {BELL_BASIS_X - 7, ",,,.., . *&&&&&&&&&&&&&&.,...,.,."},
-    {BELL_BASIS_X - 8, ",.,.,,, .   &&&&&&&&&&&&    ..,,.,,"},
-    {BELL_BASIS_X - 9, ",  ....,,     '&&&&&&&&/       .....,"},
-    {BELL_BASIS_X - 9, ".                                ..,,"},
-    {BELL_BASIS_X - 10, ",.             .         .    .....,,.."},
-    {BELL_BASIS_X - 11, " #,              ............,,.,,.....#."},
-    {BELL_BASIS_X - 11, ".##..        ..............,,,,.......(#*"},
-    {BELL_BASIS_X - 10, "##&/,..        ..................,,,&&#/"},
-    {BELL_BASIS_X - 10, "(#&&(&(**,,..            ...,,**,&#&&&&"},
-    {BELL_BASIS_X - 9, ".&&&&&##&&&(//************/#&#&&&&&&&"},
-    {BELL_BASIS_X - 6, "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&/"},
-    {BELL_BASIS_X - 3, "*&&&&&&&&&&&&&&&&&&&&&&&&/"},
-    {BELL_BASIS_X + 1, "'&&&&&&&&&&&&&&&&&/"}};
-
 static void drawHandNPC(int posX, int posY)
 {
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
@@ -87,7 +70,7 @@ void drawHitBellMotionNPC(int flint)
     if (flint == 1)
     {
         dy = 4;
-        PlaySound(TEXT(BELL_SOUND), NULL, SND_ASYNC); 
+        PlaySound(TEXT(BELL_SOUND), NULL, SND_ASYNC);
     }
 
     if (dy == 0) // 리턴
@@ -109,11 +92,6 @@ void drawHitBellMotionNPC(int flint)
     // if (PosY <= max_height) // 손이 바닥이라면 dy = 0 으로 바꿔 함수가 다시 호출되더라도 손이 그려지지 않음
     if (newPosY < 0)
         dy = 0;
-
-    if (beforePosY > 10)
-        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 8);
-    for (int line = 0; line < 15; line++)
-        printOnPos(bellModelNPC[line].str, bellModelNPC[line].posX, line + BELL_BASIS_Y);
 
     // 새로운 손 그리기
     drawHandNPC(HAND_BASIS_X, newPosY);

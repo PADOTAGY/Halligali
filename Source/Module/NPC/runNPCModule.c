@@ -7,10 +7,10 @@ void runNPCModule(Game *game)
     {
         npcPutDownBell(game, game->npc);
     }
-    //missPutDownBell(game, game->npc);
+    // missPutDownBell(game, game->npc);
 
     // npc 카드 내려놓기
-    if (game->who == 1&&game->npc->tmpAvgTimeUserPutDownBell < (game->playTime - game->lastTime))
+    if (game->who == 1 && getTimeWhenNPCDrawCard() < (game->playTime - game->lastTime))
     {
         npcPutDownCard(game);
         game->who = 0;

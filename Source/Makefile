@@ -17,12 +17,14 @@ SRCS = 	main.c \
 		Module\Item\isActiveItemModule.c\
 		Module\UI\deleteCard.c\
 		Module\UI\drawCard.c\
+		Module\UI\drawBell.c\
 		Module\UI\drawHitBellMotion.c\
 		Module\UI\drawHitBellMotionNPC.c\
 		Module\UI\drawScrean.c\
 		Module\UI\initTerminal.c\
 		Module\UI\UIutil.c\
 		Module\UI\updateUI.c\
+		Module\UI\drawItem.c\
 		Module\UI\drawGameStartPage.c\
 		Module\UI\drawGameEndPage.c\
 		Module\UI\drawNumber.c\

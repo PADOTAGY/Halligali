@@ -177,9 +177,16 @@ void updateUI(Game *game)
     static int NPCCnt;
 
     updateCard(game);
-    updateScore(game);
     updateCardSetNumber(game);
     drawTurnArrow(game->who);
+
+    // deleteItem(ITEM_POS_X, ITEM_POS_Y);
+    // drawItem(game->user->item, ITEM_POS_X, ITEM_POS_Y);
+
+    if (game->key == SPACE || game->whoBell == 1)
+        reDrawBell(1);
+    else
+        reDrawBell(0);
 
     if (game->key == SPACE)
         drawHitBellMotion(1);
@@ -193,7 +200,7 @@ void updateUI(Game *game)
 
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
     printOnPos("", 212, 0);                                                        // for test
-    printf("NPC Hit %d", NPCCnt++);                                                //
+    printf("NPC Hit %d", NPCCnt);                                                  //
     printOnPos("", 212, 8);                                                        //
     printf("game->playTime %.2f ", game->playTime);                                //
     printOnPos("", 212, 9);                                                        //
