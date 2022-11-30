@@ -29,14 +29,14 @@ int main()
 			runItemModule(game);
 			runNPCModule(game);
 			updateUI(game);
-			if (checkAndRunEndGame(game)) // fix 필. 종칠 때만 실행되어야 함.
+			if (checkAndRunEndGame(game))
 				break;
 			game->key = 0;
 			game->playTime += game->sleepMs;
 			Sleep(game->sleepMs);
 		}
+		Sleep(1000); //게임이 끝나고 endPage를 띄우기 위함.
 		drawGameEndPage();
-		
 	}
 	return 0;
 }

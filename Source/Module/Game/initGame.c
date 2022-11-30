@@ -12,6 +12,7 @@ Game *initGame()
 	game->drawCnt = 0;
 	game->playTime = 0.0;
 	game->sleepMs = 20;
+	game->lastTime = 0;
 
 	// USER
 	game->user = (User *)malloc(sizeof(User));
@@ -24,6 +25,7 @@ Game *initGame()
 	game->npc->tmpAvgTimeUserPutDownBell = 500;
 	game->npc->cntUserPutDownBell = 0;
 	game->npc->score = 0;
+	game->npc->advantage = 0;
 
 	// CARD
 	game->user->originCardSet = (struct CardSet *)malloc(sizeof(struct CardSet));

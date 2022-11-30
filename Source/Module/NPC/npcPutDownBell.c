@@ -16,4 +16,9 @@ void npcPutDownBell(Game *game, NPC *npc)
         p->next = mergedCardSet(game);
     }
     game->npc->originCardSet->count += countAll;
+    if (game->npc->advantage > 0)
+    {
+        game->npc->advantage = 0;
+        returnRaiseDifficultyNPCAdvantage(game);
+    }
 }

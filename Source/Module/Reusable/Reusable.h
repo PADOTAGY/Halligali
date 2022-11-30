@@ -100,6 +100,8 @@ typedef struct NPC
     double totalTimeUserPutDownBell;
     double tmpAvgTimeUserPutDownBell;
     int cntUserPutDownBell; // getTimeUserPutDownBell 실행 시마다 +1
+
+    int advantage;
 } NPC;
 
 typedef enum GameState

@@ -2,13 +2,12 @@
 
 void npcPutDownCard(Game *game)
 {
-
-   if (checkIsNPCAdvantage(game) == 1) // npc advantage일 때
+   game->npc->advantage = checkIsNPCAdvantage(game);
+   if (game->npc->advantage) // npc advantage일 때
    {
       npcPutDownCardAdvantage(game);
    }
-
-   else if (checkIsNPCAdvantage(game) == 0) // npc advantage아닐 때
+   else // npc advantage아닐 때
    {
       npcPutDownCardNotAdvantage(game);
    }
@@ -20,21 +19,19 @@ void npcPutDownCardAdvantage(Game *game)
    raiseDifficultyNPCAdvantage(game);
    // Sleep(game->npc->tmpAvgTimeUserPutDownBell* 1000);
 
-   if (game->npc->leftCardSet->root->id % 5 == 4) // npc왼쪽 카드더미에서 5가 나온다면
-   {
-      putDownCard(game->npc->originCardSet, game->npc->rightCardSet);
-      game->lastTime = game->playTime;
-      game->who = 0;
-   }
-
-   else if (game->npc->rightCardSet->root->id % 5 == 4) // npc오른쪽 카드더미에서 5가 나온다면
+   if (game->npc->advantage == 1) // npc왼쪽 카드더미에서 5가 나온다면
    {
       putDownCard(game->npc->originCardSet, game->npc->leftCardSet);
       game->lastTime = game->playTime;
       game->who = 0;
    }
 
-   returnRaiseDifficultyNPCAdvantage(game);
+   else if (game->npc->advantage == 2) // npc오른쪽 카드더미에서 5가 나온다면
+   {
+      putDownCard(game->npc->originCardSet, game->npc->rightCardSet);
+      game->lastTime = game->playTime;
+      game->who = 0;
+   }
 }
 
 // npc가 not advantage일 때 카드 내려놓기
