@@ -12,6 +12,12 @@ void putDownBell(Game *game)
         }
         else if (isNiceBell(game))
         {
+            int cardId = isNiceBell(game);
+            if (cardId - 1 == game->missionId) {
+                updateMissionId(game);
+                updateRandomItem(game);
+            }
+            
             if (game->user->originCardSet->count == 0)
             {
                 game->user->originCardSet->root = mergedCardSet(game);
@@ -55,10 +61,9 @@ void putDownBell(Game *game)
 
 int isNiceBell(Game *game)
 {
-    int sum[4] = {0};
-
-    if (game->who == 0 && isActiveWinItem(game->user->item))
-        return 1;
+    int sum[6] = {0};
+    if (game->whoBell == 0 && isActiveWinItem(game->user->item))
+        return 999;
 
     if (game->user->leftCardSet->count > 0)
         sum[game->user->leftCardSet->root->id / 5] += game->user->leftCardSet->root->id % 5 + 1;
@@ -69,18 +74,18 @@ int isNiceBell(Game *game)
     if (game->npc->rightCardSet->count > 0)
         sum[game->npc->rightCardSet->root->id / 5] += game->npc->rightCardSet->root->id % 5 + 1;
 
-    if (isActiveRuleChangeItem(game->user->item))
+    if (game->whoBell == 0 && isActiveRuleChangeItem(game->user->item))
     {
         for (int i = 0; i < 4; i++)
-            if ((sum[i] % 5 == 0 || sum[i] % 3 == 0) && sum[i] != 0)
-                return 1;
-        return 0;
+            if (((sum[4] + sum[i]) % 5 == 0 || (sum[4] + sum[i]) % 3 == 0) && sum[4] + sum[i] != 0)
+                return (i + 1);
+        return 0; 
     }
     else
     {
         for (int i = 0; i < 4; i++)
-            if (sum[i] % 5 == 0 && sum[i] != 0)
-                return 1;
+            if ((sum[4] + sum[i]) % 5 == 0 && sum[4]+sum[i] != 0)
+                return (i + 1);
         return 0;
     }
 }
@@ -157,6 +162,7 @@ struct Card *getCard(struct CardSet *S, int n)
     }
     return p;
 }
+
 Card *mergedCardSet(Game *game)
 {
     CardSet *userL = game->user->leftCardSet, *userR = game->user->rightCardSet, *npcL = game->npc->leftCardSet, *npcR = game->npc->rightCardSet;
@@ -259,6 +265,7 @@ void penaltyUser(Game *game)
     game->npc->originCardSet->count++;
     game->user->originCardSet->count--;
 }
+
 void penaltyNPC(Game *game)
 {
     if (game->npc->originCardSet->count == 0)

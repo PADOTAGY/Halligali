@@ -13,6 +13,7 @@ Game *initGame()
 	game->playTime = 0.0;
 	game->lastTime = 0.0;
 	game->sleepMs = 20;
+	game->missionId = getRandomMissionId();
 
 	// USER
 	game->user = (User *)malloc(sizeof(User));
@@ -22,7 +23,7 @@ Game *initGame()
 	// NPC
 	game->npc = (NPC *)malloc(sizeof(NPC));
 	game->npc->totalTimeUserPutDownBell = 0;
-	game->npc->tmpAvgTimeUserPutDownBell = 500;
+	game->npc->tmpAvgTimeUserPutDownBell = 400;
 	game->npc->cntUserPutDownBell = 0;
 	game->npc->score = 0;
 

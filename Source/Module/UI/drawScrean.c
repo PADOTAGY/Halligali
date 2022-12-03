@@ -7,7 +7,7 @@ static void drawTable()
 		printOnPos("│ ", 30, i);
 		printOnPos("│ ", 239 - 30, i);
 	}
-}
+} 
 
 static void drawPlaceForCard(int posX, int posY)
 {
@@ -50,6 +50,13 @@ static void drawPlaceForItem()
 	printOnPos("└────────────────────────────┤ ", ITEM_POS_X, ITEM_POS_Y + ITEM_SIZE_HEIGHT + 1);
 }
 
+static void drawPlaceForQuest()
+{
+	printOnPos("├──────────────────────────────", 239 - 30, 20);
+	printOnPos("Quest : ", 239 - 30 + 2, 22);
+	printOnPos("├──────────────────────────────", 239 - 30, 26);
+} 
+
 void drawScreen(Game *game)
 {
 	deletePage();
@@ -62,5 +69,6 @@ void drawScreen(Game *game)
 	drawPlaceForCard(CARD_POS_X_PERSON_R, CARD_POS_Y_PERSON_R);
 	drawPlaceForCardSetCnt();
 	drawPlaceForItem();
+	drawPlaceForQuest();
 	drawBell();
 }

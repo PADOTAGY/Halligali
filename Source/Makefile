@@ -10,6 +10,7 @@ SRCS = 	main.c \
 		Module\Game\Utils\checkAndRunEndGame.c\
 		Module\Game\initGame.c\
 		Module\Game\makeStartPage.c\
+		Module\Game\mission.c\
 		Module/UI\deletePage.c\
 		Module\Item\Utils\getNextItem.c\
 		Module\Item\Utils\runItemUtils.c\

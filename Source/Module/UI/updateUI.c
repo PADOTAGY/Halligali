@@ -169,9 +169,25 @@ void updateUI(Game *game)
     updateCardSetNumber(game);
     drawTurnBlock(game->who);
 
-    // deleteItem(ITEM_POS_X, ITEM_POS_Y);
-    // drawItem(game->user->item, ITEM_POS_X, ITEM_POS_Y);
+    deleteItem(ITEM_POS_X, ITEM_POS_Y);
 
+    if (game->user->item != NULL) {
+        if (game->user->item->state == Deleted) {
+            deleteItem(ITEM_POS_X, ITEM_POS_Y);
+        } else {
+            drawItem(game->user->item, ITEM_POS_X, ITEM_POS_Y);
+        }
+    }
+
+    if (game->missionId == 0) 
+        printOnPos("딸기로 승리하세요.    ", 239 - 30 + 2, 24);
+    else if (game->missionId == 1)
+        printOnPos("바나나로 승리하세요.   ", 239 - 30 + 2, 24);
+    else if (game->missionId == 2)
+        printOnPos("자두로 승리하세요.  ", 239 - 30 + 2, 24);
+    else if (game->missionId == 3)
+        printOnPos("라임으로 승리하세요.  ", 239 - 30 + 2, 24);
+    
     if (game->key == SPACE || game->whoBell == 1)
         reDrawBell(1);
     else
@@ -195,7 +211,8 @@ void updateUI(Game *game)
     printOnPos("", 212, 9);                                                        //
     printf("game->lastTime %.2f ", game->lastTime);                                //
     printOnPos("", 212, 2);                                                        //
-    printf("Item id %d, state %d", game->user->item->id, game->user->item->state); //
+    if (game->user->item != NULL)
+        printf("Item id %d, state %d", game->user->item->id, game->user->item->state); //
     printOnPos("", 212, 3);                                                        //
     printf("user Card orign cnt %d ", game->user->originCardSet->count);           //
     printOnPos("", 212, 4);                                                        //

@@ -19,13 +19,18 @@ void npcPutDownCard(Game *game)
 // npc가 advantage일 때 카드 내려놓기
 void npcPutDownLeftCardAdvantage(Game *game)
 {
-   // raiseDifficultyNPCAdvantage(game);
+   
    //  Sleep(game->npc->tmpAvgTimeUserPutDownBell* 1000);
 
    putDownCard(game->npc->originCardSet, game->npc->leftCardSet);
+   if(game->npc->leftCardSet->root->id == BLOCK){
+      return;
+   }
+   //raiseDifficultyNPCAdvantage(game);
    game->who = 0;
+   //game->lastTime = game->playTime;
 
-   // returnRaiseDifficultyNPCAdvantage(game);
+   //returnRaiseDifficultyNPCAdvantage(game);
 }
 
 void npcPutDownRightCardAdvantage(Game *game)
@@ -34,9 +39,14 @@ void npcPutDownRightCardAdvantage(Game *game)
    //  Sleep(game->npc->tmpAvgTimeUserPutDownBell* 1000);
 
    putDownCard(game->npc->originCardSet, game->npc->rightCardSet);
+   if(game->npc->rightCardSet->root->id == BLOCK){
+      return;
+   }
+   //raiseDifficultyNPCAdvantage(game);
    game->who = 0;
+   //game->lastTime = game->playTime;
 
-   // returnRaiseDifficultyNPCAdvantage(game);
+   //returnRaiseDifficultyNPCAdvantage(game);
 }
 
 // npc가 not advantage일 때 카드 내려놓기
@@ -49,11 +59,19 @@ void npcPutDownCardNotAdvantage(Game *game)
    if (ranpos == 0) // NPC오른쪽에 카드 놓기
    {
       putDownCard(game->npc->originCardSet, game->npc->rightCardSet);
+      if(game->npc->rightCardSet->root->id == BLOCK){
+      return;
+   }
       game->who = 0;
+      //game->lastTime = game->playTime;
    }
    else if (ranpos == 1) // NPC왼쪽에 카드 놓기
    {
       putDownCard(game->npc->originCardSet, game->npc->leftCardSet);
+      if(game->npc->leftCardSet->root->id == BLOCK){
+      return;
+   }
       game->who = 0;
+      //game->lastTime = game->playTime;
    }
 }

@@ -2,6 +2,7 @@
 #define GAME_H
 
 #include "../Reusable/Reusable.h"
+#include "../Item/item.h"
 
 #define LEFT_KEY 75
 #define RIGHT_KEY 77
@@ -11,4 +12,6 @@
 Game *initGame();
 void makeStartPage();
 void makeEndPage();
+void updateMissionId(Game *game);
+int getRandomMissionId();
 #endif

@@ -3,6 +3,7 @@
 
 #include "../Reusable/Reusable.h"
 #include "../Item/item.h"
+#include "../Game/game.h"
 
 // typedef enum CardId
 // {
