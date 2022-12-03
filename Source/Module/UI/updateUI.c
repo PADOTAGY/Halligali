@@ -118,56 +118,45 @@ static void updateCard(Game *game)
     }
 }
 
-static void drawTurnArrow(int who)
+static void drawTurnBlock(int who)
 {
     int i = 0;
-    static int beforeWho;
+    static int beforeWho = -1;
 
     if (who == beforeWho)
         return;
 
-    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
     if (who == 1)
     {
-        i = 26;
-        printOnPos("         ", 10, i++);
-        printOnPos("         ", 10, i++);
-        printOnPos("         ", 10, i++);
-        printOnPos("         ", 10, i++);
-        printOnPos("         ", 10, i++);
-        printOnPos("         ", 10, i++);
-        printOnPos("         ", 10, i++);
-        printOnPos("         ", 10, i++);
-        i = 26;
-        printOnPos("    .", 10, i++);
-        printOnPos("  .:;:.", 10, i++);
-        printOnPos(".:;;;;;:.", 10, i++);
-        printOnPos("  ;;;;;", 10, i++);
-        printOnPos("  ;;;;;", 10, i++);
-        printOnPos("  ;;;;;", 10, i++);
-        printOnPos("  ;;;;;", 10, i++);
-        printOnPos("  ;:;;;", 10, i++);
+        for (int i = 31; i < 45; i++)
+        {
+            printOnPos("  ", 60, i);
+            printOnPos("  ", 178, i);
+        }
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 6);
+        printOnPos("■■■■■■■■■■■■■■■■■■■ ", 60, 30);
+        printOnPos("■■■■■■■■■■■■■■■■■■■ ", 142, 30);
+        for (int i = 29; i > 15; i--)
+        {
+            printOnPos("■ ", 60, i);
+            printOnPos("■ ", 178, i);
+        }
     }
     else
     {
-        i = 26;
-        printOnPos("         ", 10, i++);
-        printOnPos("         ", 10, i++);
-        printOnPos("         ", 10, i++);
-        printOnPos("         ", 10, i++);
-        printOnPos("         ", 10, i++);
-        printOnPos("         ", 10, i++);
-        printOnPos("         ", 10, i++);
-        printOnPos("         ", 10, i++);
-        i = 26;
-        printOnPos("  ;;;;;", 10, i++);
-        printOnPos("  ;;;;;", 10, i++);
-        printOnPos("  ;;;;;", 10, i++);
-        printOnPos("  ;;;;;", 10, i++);
-        printOnPos("  ;;;;;", 10, i++);
-        printOnPos("..;;;;;..", 10, i++);
-        printOnPos(" ':::::'", 10, i++);
-        printOnPos("   ':`", 10, i++);
+        for (int i = 29; i > 15; i--)
+        {
+            printOnPos("  ", 60, i);
+            printOnPos("  ", 178, i);
+        }
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 10);
+        printOnPos("■■■■■■■■■■■■■■■■■■■ ", 60, 30);
+        printOnPos("■■■■■■■■■■■■■■■■■■■ ", 142, 30);
+        for (int i = 31; i < 45; i++)
+        {
+            printOnPos("■ ", 60, i);
+            printOnPos("■ ", 178, i);
+        }
     }
     beforeWho = who;
 }
@@ -178,7 +167,7 @@ void updateUI(Game *game)
 
     updateCard(game);
     updateCardSetNumber(game);
-    drawTurnArrow(game->who);
+    drawTurnBlock(game->who);
 
     // deleteItem(ITEM_POS_X, ITEM_POS_Y);
     // drawItem(game->user->item, ITEM_POS_X, ITEM_POS_Y);
