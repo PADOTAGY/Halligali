@@ -20,6 +20,8 @@
 #define NOPE_SOUND ".\\..\\Resource\\Sound\\nope.wav"
 #define DDIYONG_SOUND ".\\..\\Resource\\Sound\\ddiyoung.wav"
 
+#define cardsNum 62 
+
 typedef enum CardId
 {
     STRAWBERRY_ONE = 0,
@@ -41,7 +43,13 @@ typedef enum CardId
     LIME_TWO = 16,
     LIME_THREE = 17,
     LIME_FOUR = 18,
-    LIME_FIVE = 19
+    LIME_FIVE = 19,
+    BLUEBERRY_ONE = 20,
+    BLUEBERRY_TWO = 21,
+    BLUEBERRY_THREE = 22,
+    BLUEBERRY_FOUR = 23,
+    BLUEBERRY_FIVE = 24,
+    BLOCK = 25
 } CardId;
 
 typedef struct CardSet
@@ -115,6 +123,7 @@ typedef struct Game
     GameState state; // NotStart, Start, Pause, End
     NPC *npc;
     User *user;
+    int missionId;
     int key;     // LEFT_KEY, RIGHT_KEY, UP_KEY, SPACE_KEY
     int who;     // user = 0, npc = 1
     int gameCnt; // 0, 1, ..., 무한

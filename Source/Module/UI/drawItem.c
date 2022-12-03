@@ -3,7 +3,7 @@
 void deleteItem(int posX, int posY)
 {
 	for (int i = 0; i < ITEM_SIZE_HEIGHT; i++)
-		printOnPos("            ", posX, posY + i);
+		printOnPos("                        ", posX + 1, posY + i + 1);
 }
 
 static void drawRuleChangeItem(int state, int posX, int posY)
@@ -14,14 +14,15 @@ static void drawRuleChangeItem(int state, int posX, int posY)
 	}
 	else
 	{
-		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 12);
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 8);
 	}
 
-	posX += 2;
-	posY += 2;
+	posX += 12;
+	posY += 6;
 
+	printOnPos(" _____", posX, posY - 1);
 	printOnPos("|A .  |", posX, posY);
-	printOnPos("| /.\\|", posX, posY + 1);
+	printOnPos("| /.\\ |", posX, posY + 1);
 	printOnPos("|(_._)|", posX, posY + 2);
 	printOnPos("|  |  |", posX, posY + 3);
 	printOnPos("|____V|", posX, posY + 4);
@@ -35,15 +36,15 @@ static void drawBombItem(int state, int posX, int posY)
 	}
 	else
 	{
-		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 12);
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 8);
 	}
 
-	posX += 2;
-	posY += 2;
+	posX += 8;
+	posY += 6;
 
-	printOnPos("	        ,--.!,", posX, posY);
-	printOnPos("     __/   -*-", posX, posY + 1);
-	printOnPos("   ,d08b.  \'|`", posX, posY + 2);
+	printOnPos("	  ,--.!,", posX, posY);
+	printOnPos("     __/ -*-", posX, posY + 1);
+	printOnPos("   ,d08b.\'|`", posX, posY + 2);
 	printOnPos("   0088MM", posX, posY + 3);
 	printOnPos("   `9MMP\'", posX, posY + 4);
 }
@@ -56,11 +57,11 @@ static void drawStarItem(int state, int posX, int posY)
 	}
 	else
 	{
-		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 12);
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 8);
 	}
 
-	posX += 1;
-	posY += 1;
+	posX += 7;
+	posY += 4;
 
 	printOnPos(".", posX + 8, posY);
 	printOnPos(",O,", posX + 7, posY + 1);
@@ -80,13 +81,13 @@ static void drawWinItem(int state, int posX, int posY)
 	}
 	else
 	{
-		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 12);
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 8);
 	}
 
-	posX += ITEM_SIZE_WIDTH / 2;
-	posY += ITEM_SIZE_HEIGHT / 2;
+	posX += 9;
+	posY += 5;
 
-	printOnPos("	  _______", posX, posY);
+	printOnPos("  _______", posX, posY);
 	printOnPos(" |       |", posX, posY + 1);
 	printOnPos("(| SSAfS |)", posX, posY + 2);
 	printOnPos(" |  #X   |", posX, posY + 3);

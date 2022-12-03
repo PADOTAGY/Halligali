@@ -11,6 +11,9 @@ void cardHandler(Game *game)
         {
         case LEFT:
             putDownCard(game->user->originCardSet, game->user->leftCardSet);
+            if(game->user->leftCardSet->root->id == BLOCK){
+                break;
+            }
             game->who = 1;
             game->drawCnt++;
             game->lastTime = game->playTime;
@@ -20,6 +23,9 @@ void cardHandler(Game *game)
 
         case RIGHT:
             putDownCard(game->user->originCardSet, game->user->rightCardSet);
+            if(game->user->rightCardSet->root->id == BLOCK){
+                break;
+            }
             game->who = 1;
             game->drawCnt++;
             game->lastTime = game->playTime;

@@ -40,6 +40,25 @@ static void drawLime(int posX, int posY)
 	printOnPos("■■", posX + 1, posY + 3);
 }
 
+static void drawBlueberry(int posX, int posY)
+{
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 1);
+	printOnPos("■■", posX, posY);
+	printOnPos("■■", posX, posY + 1);
+	printOnPos("■■", posX + 2, posY + 2);
+	printOnPos("■■", posX + 2, posY + 3);
+}
+
+static void drawBlock(int posX, int posY)
+{
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
+	printOnPos("■      ■", posX, posY);
+	printOnPos("■  ■", posX+2, posY + 1);
+	printOnPos("■", posX + 4, posY + 2);
+	printOnPos("■  ■", posX + 2, posY + 3);
+	printOnPos("■      ■", posX, posY + 4);
+}
+
 void drawCard(int cardID, int posX, int posY)
 {
 	int fruit = cardID / 5;
@@ -54,6 +73,12 @@ void drawCard(int cardID, int posX, int posY)
 		drawFruit = drawPlum;
 	else if (fruit == 3)
 		drawFruit = drawLime;
+	else if (fruit == 4)
+		drawFruit = drawBlueberry;
+	else if (fruit == 5){
+		drawBlock(posX + 6, posY + 5);
+		return ;
+		}
 	else
 		return;
 

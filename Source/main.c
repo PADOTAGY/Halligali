@@ -11,6 +11,8 @@ void getKey(Game *game)
 	if (_kbhit() != 0)
 	{
 		game->key = _getch();
+		if (game->key == SPACE && isActiveBombItem(game->user->item))
+			game->key = NULL; 
 	}
 }
 
