@@ -17,10 +17,10 @@
 #define CARD_POS_X_PERSON_R 150
 #define CARD_POS_Y_PERSON_R 39
 
-#define ITEM_SIZE_WIDTH 12
-#define ITEM_SIZE_HEIGHT 12
-#define ITEM_POS_X 210
-#define ITEM_POS_Y 50
+#define ITEM_SIZE_WIDTH 28
+#define ITEM_SIZE_HEIGHT 14
+#define ITEM_POS_X 180
+#define ITEM_POS_Y 47
 
 #include "../Reusable/Reusable.h"
 #include "../Item/item.h"

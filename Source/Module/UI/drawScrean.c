@@ -42,12 +42,12 @@ static void drawPlaceForCardSetCnt()
 	printOnPos("└───┘ ", CARD_POS_X_NPC_R - 2, CARD_POS_Y_NPC_R + 17);
 }
 
-static void drawPlaceForItem() // 과연 원트에 성공할지 ... 실패...
+static void drawPlaceForItem()
 {
-	printOnPos("┌───────────┤ ", ITEM_POS_X, ITEM_POS_Y);
-	for (int i = 1; i <= ITEM_SIZE_HEIGHT - 2; i++)
-		printOnPos("│           │ ", ITEM_POS_X, ITEM_POS_Y + i);
-	printOnPos("└───────────┤ ", ITEM_POS_X, ITEM_POS_Y + ITEM_SIZE_HEIGHT);
+	printOnPos("┌────────────────────────────┤ ", ITEM_POS_X, ITEM_POS_Y);
+	for (int i = 1; i <= ITEM_SIZE_HEIGHT; i++)
+		printOnPos("│ ", ITEM_POS_X, ITEM_POS_Y + i);
+	printOnPos("└────────────────────────────┤ ", ITEM_POS_X, ITEM_POS_Y + ITEM_SIZE_HEIGHT + 1);
 }
 
 void drawScreen(Game *game)
@@ -61,6 +61,6 @@ void drawScreen(Game *game)
 	drawPlaceForCard(CARD_POS_X_PERSON_L, CARD_POS_Y_PERSON_L);
 	drawPlaceForCard(CARD_POS_X_PERSON_R, CARD_POS_Y_PERSON_R);
 	drawPlaceForCardSetCnt();
-	// drawPlaceForItem();
+	drawPlaceForItem();
 	drawBell();
 }
