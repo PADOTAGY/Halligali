@@ -38,7 +38,7 @@ int main()
 			game->playTime += game->sleepMs;
 			Sleep(game->sleepMs);
 		}
-		drawGameEndPage();
+		drawGameEndPage(game);
 	}
 	return 0;
 }

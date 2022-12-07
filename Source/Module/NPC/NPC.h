@@ -20,5 +20,5 @@ double getTimeUserPutDownBell(Game *game);
 void npcPutDownBell(Game *game, NPC *npc);
 void missPutDownBell(Game *game, NPC *npc);
 int isMissPutDownBell(Game *game, NPC *npc);
-
+int isNiceBellNPC(Game *game);
 #endif
