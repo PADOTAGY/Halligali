@@ -14,4 +14,8 @@ void makeStartPage();
 void makeEndPage();
 void updateMissionId(Game *game);
 int getRandomMissionId();
+int checkAndRunEndGame(Game *game);
+void updateGameState(Game *game);
+int isEndGame(Game *game);
+int isWinUser(Game *game);
 #endif

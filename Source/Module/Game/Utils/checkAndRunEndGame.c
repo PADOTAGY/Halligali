@@ -1,8 +1,10 @@
 #include "../game.h"
 
-int checkAndRunEndGame(Game *game) {
+int checkAndRunEndGame(Game *game)
+{
     updateGameState(game);
-    if (isEndGame(game)) {
+    if (isEndGame(game))
+    {
         if (isWinUser(game))
             game->user->score += 1;
         else
@@ -13,12 +15,14 @@ int checkAndRunEndGame(Game *game) {
     return 0;
 }
 
-void updateGameState(Game *game) {      // 카드수 둘다 0이거나  
-    if (((game->whoBell!=-1) && (game->npc->originCardSet->count == 0 || game->user->originCardSet->count == 0)) || (game->npc->originCardSet->count == 0 && game->user->originCardSet->count == 0))
+void updateGameState(Game *game)
+{ // 카드수 둘다 0이거나
+    if (((game->whoBell != -1) && (game->npc->originCardSet->count == 0 || game->user->originCardSet->count == 0)) || (game->npc->originCardSet->count == 0 && game->user->originCardSet->count == 0))
         game->state = End;
 }
 
-int isEndGame(Game *game) {
+int isEndGame(Game *game)
+{
     if (game->state == End)
         return 1;
     return 0;
