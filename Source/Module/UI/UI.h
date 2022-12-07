@@ -55,7 +55,7 @@ void deleteCard(int posX, int posY);
 void drawHitBellMotionTest(int flint);
 
 void drawGameStartPage();
-void drawGameEndPage();
+void drawGameEndPage(Game *game);
 
 void updateScore(Game *game);
 void updateCardSetNumber(Game *game);
