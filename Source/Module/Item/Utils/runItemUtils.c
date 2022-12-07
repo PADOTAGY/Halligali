@@ -25,22 +25,22 @@ void updateItemState(Item *item)
     switch (item->id)
     {
     case RuleChangeItemId:
-        if (item->drawCnt > RULECHANGE_ITEM_MAX_ROUND)
+        if (item->drawCnt >= 5)
             item->state = Deleted;
         break;
 
     case StarItemId:
-        if (item->drawCnt > STAR_ITEM_MAX_ROUND)
+        if (item->drawCnt >= 5)
             item->state = Deleted;
         break;
 
     case BombItemId:
-        if (item->drawCnt > BOMB_ITEM_MAX_ROUND)
+        if (item->drawCnt >= 3)
             item->state = Deleted;
         break;
 
     case WinItemId:
-        if (item->drawCnt > WIN_ITEM_MAX_ROUND)
+        if (item->drawCnt >= 1)
             item->state = Deleted;
         break;
     }

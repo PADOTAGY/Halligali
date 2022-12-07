@@ -212,7 +212,7 @@ void updateUI(Game *game)
     printf("game->lastTime %.2f ", game->lastTime);                                //
     printOnPos("", 212, 2);                                                        //
     if (game->user->item != NULL)
-        printf("Item id %d, state %d", game->user->item->id, game->user->item->state); //
+        printf("Item id %d, state %d drawCnt %d", game->user->item->id, game->user->item->state, game->user->item->drawCnt); //
     printOnPos("", 212, 3);                                                        //
     printf("user Card orign cnt %d ", game->user->originCardSet->count);           //
     printOnPos("", 212, 4);                                                        //
