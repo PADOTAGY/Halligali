@@ -1,13 +1,14 @@
 #ifndef NPC_H
 #define NPC_H
 #include "../Reusable/Reusable.h"
+#include "../Card/card.h"
 
-//함수 선언
-// npc 카드 내려 놓기
+// 함수 선언
+//  npc 카드 내려 놓기
 int checkIsNPCAdvantage(Game *game);
 void npcPutDownCard(Game *game);
 void npcPutDownCardNotAdvantage(Game *game);
-void npcPutDownRightCardAdvantage(game);
+void npcPutDownRightCardAdvantage(Game *game);
 void npcPutDownLeftCardAdvantage(Game *game);
 int getTimeWhenNPCDrawCard(void);
 // npc 난이도 조절

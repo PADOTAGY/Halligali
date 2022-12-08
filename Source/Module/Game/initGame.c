@@ -2,6 +2,10 @@
 
 Game *initGame()
 {
+	CONSOLE_CURSOR_INFO curInfo;
+	GetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &curInfo);
+	curInfo.bVisible = 0;
+	SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &curInfo);
 	srand((unsigned int)time(NULL));
 	// GAME
 	Game *game = (Game *)malloc(sizeof(Game));
