@@ -174,6 +174,10 @@ void updateUI(Game *game)
     if (game->user->item != NULL) {
         if (game->user->item->state == Deleted) {
             deleteItem(ITEM_POS_X, ITEM_POS_Y);
+            printOnPos("                           ", 239 - 30 + 2, ITEM_POS_Y + 2);
+		    printOnPos("                           ", 239 - 30 + 2, ITEM_POS_Y + 4);
+            printOnPos("                           ", 239 - 30 + 2, ITEM_POS_Y + 8);
+            printOnPos("                           ", 239 - 30 + 2, ITEM_POS_Y + 10);
         } else {
             drawItem(game->user->item, ITEM_POS_X, ITEM_POS_Y);
         }

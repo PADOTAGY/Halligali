@@ -22,6 +22,7 @@ Game *initGame()
 	// USER
 	game->user = (User *)malloc(sizeof(User));
 	game->user->item = NULL;
+	// game->user->item = getNextItem();
 	game->user->score = 0;
 
 	// NPC

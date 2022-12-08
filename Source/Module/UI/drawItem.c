@@ -105,18 +105,40 @@ void drawItem(Item *item, int posX, int posY)
 	{
 	case RuleChangeItemId:
 		drawRuleChangeItem(item->state, posX, posY);
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 8);
+		printOnPos("3의 배수도", 239 - 30 + 2, posY + 2);
+		printOnPos("승리 조건입니다.", 239 - 30 + 2, posY + 4);
+		printOnPos("tip: NPC는 ", 239 - 30 + 2, posY + 8);
+		printOnPos("     그 사실을 몰라요 !", 239 - 30 + 2, posY + 10);
+
 		break;
 
 	case BombItemId:
 		drawBombItem(item->state, posX, posY);
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 8);
+		printOnPos("3턴 동안 ", 239 - 30 + 2, posY + 2);
+		printOnPos("종을 누르지 못하게 됩니다.", 239 - 30 + 2, posY + 4);
+		printOnPos("tip: 조금만", 239 - 30 + 2, posY + 8);
+		printOnPos("     기다리세요 !", 239 - 30 + 2, posY + 10);
+
 		break;
 
 	case StarItemId:
 		drawStarItem(item->state, posX, posY);
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 8);
+		printOnPos("5턴 동안", 239 - 30 + 2, posY + 2);
+		printOnPos("패널티가 없습니다.", 239 - 30 + 2, posY + 4);
+		printOnPos("tip: 종을", 239 - 30 + 2, posY + 8);
+		printOnPos("     마구누르세요 !", 239 - 30 + 2, posY + 10);
+
 		break;
 
 	case WinItemId:
 		drawWinItem(item->state, posX, posY);
+		printOnPos("사용 후 종을 누르면 ", 239 - 30 + 2, posY + 2);
+		printOnPos("승리합니다..", 239 - 30 + 2, posY + 4);
+		printOnPos("tip: 카드가 많이 ", 239 - 30 + 2, posY + 8);
+		printOnPos("     쌓인 판에서 사용하세요 !", 239 - 30 + 2, posY + 10);
 		break;
 	}
 }
