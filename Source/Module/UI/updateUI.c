@@ -179,14 +179,21 @@ void updateUI(Game *game)
         }
     }
 
-    if (game->missionId == 0) 
-        printOnPos("딸기로 승리하세요.    ", 239 - 30 + 2, 24);
-    else if (game->missionId == 1)
-        printOnPos("바나나로 승리하세요.   ", 239 - 30 + 2, 24);
-    else if (game->missionId == 2)
-        printOnPos("자두로 승리하세요.  ", 239 - 30 + 2, 24);
-    else if (game->missionId == 3)
-        printOnPos("라임으로 승리하세요.  ", 239 - 30 + 2, 24);
+    switch (game->missionId == 0) {
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 8);
+        case 0:
+            printOnPos("딸기로 승리하세요.    ", 239 - 30 + 2, 24);
+            break;
+        case 1:
+            printOnPos("바나나로 승리하세요.   ", 239 - 30 + 2, 24);
+            break;
+        case 2:
+            printOnPos("자두로 승리하세요.  ", 239 - 30 + 2, 24);
+            break;
+        case 3:
+            printOnPos("라임으로 승리하세요.  ", 239 - 30 + 2, 24);
+            break;
+    }
     
     if (game->key == SPACE || game->whoBell == 1)
         reDrawBell(1);
