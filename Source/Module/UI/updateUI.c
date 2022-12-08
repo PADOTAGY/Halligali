@@ -179,8 +179,8 @@ void updateUI(Game *game)
         }
     }
 
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 8);
     switch (game->missionId == 0) {
-        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 8);
         case 0:
             printOnPos("딸기로 승리하세요.    ", 239 - 30 + 2, 24);
             break;
