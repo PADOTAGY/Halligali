@@ -89,7 +89,7 @@ static void drawWinItem(int state, int posX, int posY)
 
 	printOnPos("  _______", posX, posY);
 	printOnPos(" |       |", posX, posY + 1);
-	printOnPos("(| SSAfS |)", posX, posY + 2);
+	printOnPos("(| W I N |)", posX, posY + 2);
 	printOnPos(" |  #X   |", posX, posY + 3);
 	printOnPos("  \\     /", posX, posY + 4);
 	printOnPos("   `---'", posX, posY + 5);
