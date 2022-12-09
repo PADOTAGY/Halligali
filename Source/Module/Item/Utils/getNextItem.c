@@ -18,7 +18,7 @@ ItemId getRandomItem() {
 Item* getNextItem() {
     Item *item = (Item*)malloc(sizeof(Item));
     item->id = getRandomItem();
-    // item->id = 0;
+    // item->id = 2;
     item->state = Inactive;
     item->drawCnt = 0;
 

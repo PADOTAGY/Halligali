@@ -35,6 +35,7 @@ void updateItemState(Item *item)
         break;
 
     case BombItemId:
+        item->state = Active;
         if (item->drawCnt >= 3)
             item->state = Deleted;
         break;
