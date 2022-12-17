@@ -26,6 +26,8 @@ static void drawRuleChangeItem(int state, int posX, int posY)
 	printOnPos("|(_._)|", posX, posY + 2);
 	printOnPos("|  |  |", posX, posY + 3);
 	printOnPos("|____V|", posX, posY + 4);
+	
+	PlaySound(TEXT(ITEM_GET_SOUND), NULL, SND_ASYNC);
 }
 
 static void drawBombItem(int state, int posX, int posY)
@@ -47,6 +49,8 @@ static void drawBombItem(int state, int posX, int posY)
 	printOnPos("   ,d08b.\'|`", posX, posY + 2);
 	printOnPos("   0088MM", posX, posY + 3);
 	printOnPos("   `9MMP\'", posX, posY + 4);
+
+	PlaySound(TEXT(BOMB_SOUND), NULL, SND_SYNC);
 }
 
 static void drawStarItem(int state, int posX, int posY)
@@ -71,6 +75,8 @@ static void drawStarItem(int state, int posX, int posY)
 	printOnPos("OOOO\'OOOO", posX + 4, posY + 5);
 	printOnPos("OOO\'   \'OOO", posX + 3, posY + 6);
 	printOnPos("O\'         \'O ", posX + 2, posY + 7);
+	
+	PlaySound(TEXT(STAR_SOUND), NULL, SND_ASYNC);
 }
 
 static void drawWinItem(int state, int posX, int posY)
@@ -94,6 +100,8 @@ static void drawWinItem(int state, int posX, int posY)
 	printOnPos("  \\     /", posX, posY + 4);
 	printOnPos("   `---'", posX, posY + 5);
 	printOnPos("   _|_|_", posX, posY + 6);
+	
+	PlaySound(TEXT(FANFARE_SOUND), NULL, SND_ASYNC);
 }
 
 void drawItem(Item *item, int posX, int posY)

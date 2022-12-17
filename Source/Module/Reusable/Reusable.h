@@ -17,8 +17,12 @@
 
 #define POP_SOUND ".\\..\\Resource\\Sound\\pop.wav"
 #define BELL_SOUND ".\\..\\Resource\\Sound\\bell.wav"
+#define ITEM_GET_SOUND ".\\..\\Resource\\Sound\\bbiyoung.wav"
+#define BOMB_SOUND ".\\..\\Resource\\Sound\\bomb.wav"
+#define FANFARE_SOUND ".\\..\\Resource\\Sound\\fanfare.wav"
 #define NOPE_SOUND ".\\..\\Resource\\Sound\\nope.wav"
-#define DDIYONG_SOUND ".\\..\\Resource\\Sound\\ddiyoung.wav"
+// #define BELL_SOUND ".\\..\\Resource\\Sound\\pororong.wav"
+#define STAR_SOUND ".\\..\\Resource\\Sound\\star.wav"
 
 #define cardsNum 62 
 
