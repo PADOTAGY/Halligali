@@ -3,7 +3,7 @@
 void deleteItem(int posX, int posY)
 {
 	for (int i = 0; i < ITEM_SIZE_HEIGHT; i++)
-		printOnPos("                        ", posX + 1, posY + i + 1);
+		printOnPos("                       ", posX + 2, posY + i + 1);
 }
 
 static void drawRuleChangeItem(int state, int posX, int posY)

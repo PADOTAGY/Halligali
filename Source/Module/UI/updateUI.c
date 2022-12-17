@@ -161,30 +161,17 @@ static void drawTurnBlock(int who)
     beforeWho = who;
 }
 
-void updateUI(Game *game)
+void updateItem(Game *game)
 {
-    static int NPCCnt;
+    static ItemId beforeItemId = 0;
+    static GameState beforeState = Deleted;
+    static int beforeMissionId = -1;
 
-    updateCard(game);
-    updateCardSetNumber(game);
-    drawTurnBlock(game->who);
-
-    deleteItem(ITEM_POS_X, ITEM_POS_Y);
-
-    if (game->user->item != NULL) {
-        if (game->user->item->state == Deleted) {
-            deleteItem(ITEM_POS_X, ITEM_POS_Y);
-            printOnPos("                           ", 239 - 30 + 2, ITEM_POS_Y + 2);
-		    printOnPos("                           ", 239 - 30 + 2, ITEM_POS_Y + 4);
-            printOnPos("                           ", 239 - 30 + 2, ITEM_POS_Y + 8);
-            printOnPos("                           ", 239 - 30 + 2, ITEM_POS_Y + 10);
-        } else {
-            drawItem(game->user->item, ITEM_POS_X, ITEM_POS_Y);
-        }
-    }
+    if (beforeMissionId == game->missionId)
+        return ;
 
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 8);
-    switch (game->missionId == 0) {
+    switch (game->missionId ) {
         case 0:
             printOnPos("딸기로 승리하세요.    ", 239 - 30 + 2, 24);
             break;
@@ -198,6 +185,67 @@ void updateUI(Game *game)
             printOnPos("라임으로 승리하세요.  ", 239 - 30 + 2, 24);
             break;
     }
+    
+    if (game->user->item == NULL)
+        return ;
+
+    if (beforeItemId == game->user->item->id && beforeState == game->user->item->state)
+        return ;
+
+    deleteItem(ITEM_POS_X, ITEM_POS_Y);
+    if (game->user->item->state == Deleted) {
+        printOnPos("                           ", 239 - 30 + 2, ITEM_POS_Y + 2);
+        printOnPos("                           ", 239 - 30 + 2, ITEM_POS_Y + 4);
+        printOnPos("                           ", 239 - 30 + 2, ITEM_POS_Y + 8);
+        printOnPos("                           ", 239 - 30 + 2, ITEM_POS_Y + 10);
+    } else {
+        drawItem(game->user->item, ITEM_POS_X, ITEM_POS_Y);
+    }
+
+    beforeItemId = game->user->item->id;
+    beforeState = game->user->item->state;
+}
+
+void printStates(Game *game)
+{
+    static int NPCCnt;
+    static int userCardSetCnt;
+    static int NPCCardSetCnt;
+
+    if (userCardSetCnt == game->user->originCardSet->count && NPCCardSetCnt == game->npc->originCardSet->count)
+        return ;
+
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
+    printOnPos("", 212, 0);                                                    
+    printf("NPC Hit %d", NPCCnt);                                                  
+    printOnPos("", 212, 8);                          
+    printf("game->lastTime %.2f ", game->lastTime);                                
+    printOnPos("", 212, 2);                                                        
+    if (game->user->item != NULL)
+        printf("Item id %d, state %d drawCnt %d", game->user->item->id, game->user->item->state, game->user->item->drawCnt); 
+    printOnPos("", 212, 3);                                                        
+    printf("user Card orign cnt %d ", game->user->originCardSet->count);           
+    printOnPos("", 212, 4);                                                        
+    printf("npc Card orign cnt %d ", game->npc->originCardSet->count);             
+    printOnPos("", 212, 5);                                                        
+    printf("tmpAvgTime %.2f ", game->npc->tmpAvgTimeUserPutDownBell);              
+    printOnPos("", 212, 7);                                                        
+    printf("cntUserPutDownBell %d ", game->npc->cntUserPutDownBell);  
+    printOnPos("", 212, 6);                                                        
+    printf("totalTime %.2f ", game->npc->totalTimeUserPutDownBell);                
+ 
+
+    userCardSetCnt = game->user->originCardSet->count;
+    NPCCardSetCnt = game->npc->originCardSet->count;
+}
+
+void updateUI(Game *game)
+{
+    updateCard(game);
+    updateCardSetNumber(game);
+    drawTurnBlock(game->who);
+    updateItem(game);
+
     
     if (game->key == SPACE || game->whoBell == 1)
         reDrawBell(1);
@@ -214,24 +262,9 @@ void updateUI(Game *game)
     else
         drawHitBellMotionNPC(0);
 
+
+    printStates(game);
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
-    printOnPos("", 212, 0);                                                        // for test
-    printf("NPC Hit %d", NPCCnt);                                                  //
-    printOnPos("", 212, 8);                                                        //
-    printf("game->playTime %.2f ", game->playTime);                                //
-    printOnPos("", 212, 9);                                                        //
-    printf("game->lastTime %.2f ", game->lastTime);                                //
-    printOnPos("", 212, 2);                                                        //
-    if (game->user->item != NULL)
-        printf("Item id %d, state %d drawCnt %d", game->user->item->id, game->user->item->state, game->user->item->drawCnt); //
-    printOnPos("", 212, 3);                                                        //
-    printf("user Card orign cnt %d ", game->user->originCardSet->count);           //
-    printOnPos("", 212, 4);                                                        //
-    printf("npc Card orign cnt %d ", game->npc->originCardSet->count);             //
-    printOnPos("", 212, 5);                                                        //
-    printf("tmpAvgTime %.2f ", game->npc->tmpAvgTimeUserPutDownBell);              //
-    printOnPos("", 212, 6);                                                        //
-    printf("totalTime %.2f ", game->npc->totalTimeUserPutDownBell);                //
-    printOnPos("", 212, 7);                                                        //
-    printf("cntUserPutDownBell %d ", game->npc->cntUserPutDownBell);               //
+    printOnPos("", 212, 8);
+    printf("game->playTime %.2f ", game->playTime); 
 }
