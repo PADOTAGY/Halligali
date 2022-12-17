@@ -9,7 +9,6 @@ void putDownBell(Game *game)
         if (isActiveBombItem(game->user->item))
         {
             // nothing
-	        PlaySound(TEXT(NOPE_SOUND), NULL, SND_ASYNC);
             
         }
         else if (isNiceBell(game))
