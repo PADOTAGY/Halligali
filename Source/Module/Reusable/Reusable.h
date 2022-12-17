@@ -21,7 +21,7 @@
 #define BOMB_SOUND ".\\..\\Resource\\Sound\\bomb.wav"
 #define FANFARE_SOUND ".\\..\\Resource\\Sound\\fanfare.wav"
 #define NOPE_SOUND ".\\..\\Resource\\Sound\\nope.wav"
-// #define BELL_SOUND ".\\..\\Resource\\Sound\\pororong.wav"
+#define RULL_CHANGE_SOUND ".\\..\\Resource\\Sound\\rullchange.wav"
 #define STAR_SOUND ".\\..\\Resource\\Sound\\star.wav"
 
 #define cardsNum 62 
