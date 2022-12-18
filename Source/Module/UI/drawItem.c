@@ -3,7 +3,7 @@
 void deleteItem(int posX, int posY)
 {
 	for (int i = 0; i < ITEM_SIZE_HEIGHT; i++)
-		printOnPos("                        ", posX + 1, posY + i + 1);
+		printOnPos("                       ", posX + 2, posY + i + 1);
 }
 
 static void drawRuleChangeItem(int state, int posX, int posY)
@@ -11,10 +11,12 @@ static void drawRuleChangeItem(int state, int posX, int posY)
 	if (state == Active)
 	{
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 10);
+		PlaySound(TEXT(RULL_CHANGE_SOUND), NULL, SND_ASYNC);
 	}
 	else
 	{
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 8);
+		PlaySound(TEXT(ITEM_GET_SOUND), NULL, SND_SYNC);
 	}
 
 	posX += 12;
@@ -26,6 +28,7 @@ static void drawRuleChangeItem(int state, int posX, int posY)
 	printOnPos("|(_._)|", posX, posY + 2);
 	printOnPos("|  |  |", posX, posY + 3);
 	printOnPos("|____V|", posX, posY + 4);
+	
 }
 
 static void drawBombItem(int state, int posX, int posY)
@@ -47,6 +50,8 @@ static void drawBombItem(int state, int posX, int posY)
 	printOnPos("   ,d08b.\'|`", posX, posY + 2);
 	printOnPos("   0088MM", posX, posY + 3);
 	printOnPos("   `9MMP\'", posX, posY + 4);
+
+	PlaySound(TEXT(BOMB_SOUND), NULL, SND_SYNC);
 }
 
 static void drawStarItem(int state, int posX, int posY)
@@ -54,10 +59,12 @@ static void drawStarItem(int state, int posX, int posY)
 	if (state == Active)
 	{
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 10);
+		PlaySound(TEXT(STAR_SOUND), NULL, SND_ASYNC);
 	}
 	else
 	{
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 8);
+		PlaySound(TEXT(ITEM_GET_SOUND), NULL, SND_SYNC);
 	}
 
 	posX += 7;
@@ -71,6 +78,7 @@ static void drawStarItem(int state, int posX, int posY)
 	printOnPos("OOOO\'OOOO", posX + 4, posY + 5);
 	printOnPos("OOO\'   \'OOO", posX + 3, posY + 6);
 	printOnPos("O\'         \'O ", posX + 2, posY + 7);
+	
 }
 
 static void drawWinItem(int state, int posX, int posY)
@@ -78,10 +86,12 @@ static void drawWinItem(int state, int posX, int posY)
 	if (state == Active)
 	{
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 10);
+		PlaySound(TEXT(FANFARE_SOUND), NULL, SND_ASYNC);
 	}
 	else
 	{
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 8);
+		PlaySound(TEXT(ITEM_GET_SOUND), NULL, SND_SYNC);
 	}
 
 	posX += 9;
@@ -94,6 +104,7 @@ static void drawWinItem(int state, int posX, int posY)
 	printOnPos("  \\     /", posX, posY + 4);
 	printOnPos("   `---'", posX, posY + 5);
 	printOnPos("   _|_|_", posX, posY + 6);
+	
 }
 
 void drawItem(Item *item, int posX, int posY)

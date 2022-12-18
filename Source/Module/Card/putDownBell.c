@@ -9,6 +9,7 @@ void putDownBell(Game *game)
         if (isActiveBombItem(game->user->item))
         {
             // nothing
+            
         }
         else if (isNiceBell(game))
         {
